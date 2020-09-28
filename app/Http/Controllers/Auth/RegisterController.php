@@ -53,7 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             //alpha_numは英数字であるか、unique:usersはusersテーブルの他のレコードのnameカラムにリクエストされたnameと同じ値がないかチェック
-            'name' => ['required', 'string', 'alpha_num', 'min3', 'max16', 'unique:users'],
+            'name' => ['required', 'string', 'alpha_num', 'min:3', 'max:16', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
