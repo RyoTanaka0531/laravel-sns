@@ -12,4 +12,6 @@
 */
 Auth::routes();
 
-Route::get('/', 'ArticleController@index');
+Route::get('/', 'ArticleController@index')->name('articles.index');
+//middlewareを使い、未ログインユーザーのurl直打ちでの遷移を拒否している
+Route::resource('/articles', 'ArticleController')->except(['index'])->middleware('auth');
