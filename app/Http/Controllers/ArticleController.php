@@ -9,6 +9,12 @@ use App\Http\Requests\ArticleRequest;
 class ArticleController extends Controller
 {
     //
+    public function __construct()
+    {
+        //ArticlePolicyとの対応関係を行う
+        $this->authorizeResource(Article::class, 'article');
+    }
+
     public function index()
     {
         $articles = Article::all()->sortByDesc('created_at');
