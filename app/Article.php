@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Article extends Model
 {
+
+    //fillableを使うことでクライアント側からtitleやbody以外のパラメータを含んだ不正なリクエストを制限することができる
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+
     // :BelongsToという記述はuserメソッドの戻り値の「型」を宣言している
     public function user():BelongsTo
     {

@@ -27,7 +27,7 @@ class ArticleRequest extends FormRequest
     {
         return [
             //
-            'title' => 'required|max:150',
+            'title' => 'required|max:50',
             'body' => 'required|max:500',
         ];
     }
@@ -38,6 +38,6 @@ class ArticleRequest extends FormRequest
         return[
             'title' => 'タイトル',
             'body' => '本文',
-        ]
+        ];
     }
 }
