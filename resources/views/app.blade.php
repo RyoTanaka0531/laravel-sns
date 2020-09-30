@@ -14,7 +14,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
 </head>
 <body>
-    @yield('content')
+    {{-- id=app resources/js/app.jsに定義したVueコンポーネントを各Bladeで使えるようにする --}}
+    <div id="app">
+        @yield('content')
+    </div>
+
+    {{-- この/js/app.jsはlaravel/public/js/app.jsのこと --}}
+    <script src="{{mix('js/app.js')}}"></script>
     {{-- JQuery --}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     {{-- Bootstrap tooltips --}}
