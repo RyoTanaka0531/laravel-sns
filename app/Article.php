@@ -29,7 +29,7 @@ class Article extends Model
         //likeにおけるarticleモデルとuserモデルの関係は多対多となる
         //belongsToManyメソッドの第一引数には関係するモデルのモデル名を渡す
         //第二引数には中間テーブルのテーブル名を渡す
-        return $this->belongsToMany('App\User', 'like')->withTimestamps();
+        return $this->belongsToMany('App\User', 'likes')->withTimestamps();
     }
 
     public function isLikedBy(?User $user): bool
