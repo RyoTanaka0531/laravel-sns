@@ -42,4 +42,13 @@ class Article extends Model
         ?(bool)$this->likes->where('id', $user->id)->count()
         :false;
     }
+
+    //get...Attribute形式をアクセサという
+    //使用する際はgetとAttributeの部分を除き、残った部分をスネークケースにし、呼び出し時は()は記述しない
+    public function getCountLikesAttribute(): int
+    {
+        //$this->likesにより、記事モデルからlikesテーブル経由で紐づいているユーザーモデルが、コレクションで返る
+        //つまり、この記事にいいねした全ユーザーモデルがコレクションで返る
+        return $this->likes->count();
+    }
 }
