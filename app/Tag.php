@@ -12,4 +12,14 @@ class Tag extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function getHashtagAttribute(): string
+    {
+        return '#'. $this->name;
+    }
+
+    public function articles(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Article')->withTimestamps();
+    }
 }
