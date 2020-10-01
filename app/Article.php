@@ -51,4 +51,9 @@ class Article extends Model
         //つまり、この記事にいいねした全ユーザーモデルがコレクションで返る
         return $this->likes->count();
     }
+
+    public function tags():BelongsToMany
+    {
+        return $this->belognsToMany('App/Tag')->withTimestamps();
+    }
 }
