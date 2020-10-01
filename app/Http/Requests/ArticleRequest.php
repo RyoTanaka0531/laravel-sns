@@ -29,6 +29,8 @@ class ArticleRequest extends FormRequest
             //
             'title' => 'required|max:50',
             'body' => 'required|max:500',
+            //スペースと/を含ませないようにする
+            'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
         ];
     }
 
@@ -38,6 +40,21 @@ class ArticleRequest extends FormRequest
         return[
             'title' => 'タイトル',
             'body' => '本文',
+            'tags' => 'タグ',
         ];
+    }
+
+    //フォームリクエスのバリデーションが成功した後に自動的に呼ばれるメソッド
+    public function passedValidation()
+    {
+        //json_decodeはJSON形式の文字列をPHP形式の連想配列に変換する
+        //collection 配列データを操作するための、書きやすく、使いやすいラッパー
+        $this->tags = collect(json_decode($this->tags))
+        //コレクションの要素が第一引数から、第二引数に指定した数分だけになる->0から5個分
+        ->slice(0, 5)
+        //map コレクションの各要素に対して順に処理を行い、新しいコレクションの作成を行う
+        ->map(function ($requestTag){
+            return $requestTag->text;
+        });
     }
 }
