@@ -6,7 +6,11 @@
 </div>
 <div class="form-group">
     <article-tags-input
-    
+    {{-- このformはcreateアクションでも使用され、createでは$tagNamesを渡せない
+        なので、$tagNamesがnullだった時には空の配列をコンポーネントに渡せるように考慮している --}}
+    :initial-tags='@json($tagNames ?? [])'
+    {{-- bladeから、vueコンポーネントにタグ情報を渡す --}}
+    :autocomplete-items='@json($allTagNames ?? [])'
     >
     </article-tags-input>
 </div>
