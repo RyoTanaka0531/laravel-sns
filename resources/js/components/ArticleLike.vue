@@ -51,6 +51,7 @@
                 :this.like()
             },
             async like() {
+                //axiosを使いlaravelへpost送信し、非同期処理
                 const response = await axios.put(this.endpoint)
 
                 this.isLikedBy = true
