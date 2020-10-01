@@ -54,6 +54,6 @@ class Article extends Model
 
     public function tags():BelongsToMany
     {
-        return $this->belognsToMany('App/Tag')->withTimestamps();
+        return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 }
