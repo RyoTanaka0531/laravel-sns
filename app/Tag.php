@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Tag extends Model
 {
     //
+    protected $fillable = [
+        'name',
+    ];
 }
