@@ -49,7 +49,14 @@ class User extends Authenticatable
     {
         //中間テーブルのカラム名と、リレーション元/先のテーブル名に規則性がない(テーブル名に相違がない)ため、
         //第三引数と第四引数で中間テーブルのカラム名を指定する必要がある
+        //第三引数にリレーション元モデルidを示す中間テーブルのカラムを指定
+        //第四引数にリレーション先モデルidを示す中間テーブルのカラムを指定
         return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
+    }
+
+    public function followings(): BelongsToMany
+    {
+        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id')->withTimestamps();
     }
 
     public function isFollowedBy(?User $user): bool
@@ -58,4 +65,5 @@ class User extends Authenticatable
             ? (bool)$this->followers->where('id', $user->id)->count()
             : false;
     }
+
 }
