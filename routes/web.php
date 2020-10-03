@@ -11,6 +11,11 @@
 |
 */
 Auth::routes();
+Route::prefix('login')->name('login.')->group(function(){
+    //{provider}には利用するプロバイダ名が入る。今回はgoogleが入る
+    //他サービスを利用することを想定しているため{provider}としている
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+});
 
 Route::get('/', 'ArticleController@index')->name('articles.index');
 //middlewareを使い、未ログインユーザーのurl直打ちでの遷移を拒否している
