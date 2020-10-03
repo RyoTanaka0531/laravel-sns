@@ -5,9 +5,11 @@ namespace App;
 use App\Mail\BareMail;
 use App\Notifications\PasswordResetNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\MasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -45,6 +47,11 @@ class User extends Authenticatable
         $this->notify(new PasswordResetNotification($token, new BareMail()));
     }
 
+    public function articles():HasMany
+    {
+        return $this->hasMany('App\Article');
+    }
+
     public function followers(): BelongsToMany
     {
         //中間テーブルのカラム名と、リレーション元/先のテーブル名に規則性がない(テーブル名に相違がない)ため、
@@ -76,5 +83,6 @@ class User extends Authenticatable
     {
         return $this->followings->count();
     }
+
 
 }
