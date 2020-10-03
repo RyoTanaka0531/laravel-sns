@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+
 
 class LoginController extends Controller
 {
@@ -43,5 +46,22 @@ class LoginController extends Controller
     public function redirectToProvider(string $provider)
     {
         return Socialite::driver($provider)->redirect();
+    }
+
+    //providerからユーザー情報を取得
+    public function handleProviderCallback(Request $request, string $provider)
+    {
+        //stateless()はセッション状態の確認を無効化しているメソッド
+        $providerUser = Socialite::driver($provider)->stateless()->user();
+        //providerから取得したユーザー情報からメールアドレスを取り出し、そのメールアドレスが本サービスのusers
+        //テーブルに存在するか調べている
+        $user = User::where('email', $providerUser->getEmail())->first();
+
+        if($user){
+            //ログイン状態にする
+            //loginメソッドの第二引数をtrueにすることで、ログアウト操作をしない限りログイン状態が維持される
+            $this->guard()->login($user, true);
+            return $this->sendLoginResponse($request);
+        }
     }
 }

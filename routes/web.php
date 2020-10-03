@@ -15,6 +15,8 @@ Route::prefix('login')->name('login.')->group(function(){
     //{provider}には利用するプロバイダ名が入る。今回はgoogleが入る
     //他サービスを利用することを想定しているため{provider}としている
     Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+    //認証後にプロバイダーからのコールバックを受けるルート
+    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
 });
 
 Route::get('/', 'ArticleController@index')->name('articles.index');
