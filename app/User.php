@@ -66,4 +66,15 @@ class User extends Authenticatable
             : false;
     }
 
+    public function getCountFollowersAttribute():int
+    {
+        //$this->followersによりユーザーモデルの全フォロワーがコレクションで返る
+        return $this->followers->count();
+    }
+
+    public function getCountFollowingsAttribute():int
+    {
+        return $this->followings->count();
+    }
+
 }
