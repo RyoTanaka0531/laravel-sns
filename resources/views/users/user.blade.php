@@ -25,8 +25,12 @@
         <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
             {{ $user->name }}
         </a>
-
         </h2>
+    </div>
+    <div class="card-body">
+        <div class="card-text">
+            {{$user->profile}}
+        </div>
     </div>
     <div class="card-body">
         <div class="card-text">
