@@ -61,7 +61,8 @@ class LoginController extends Controller
             //ログイン状態にする
             //loginメソッドの第二引数をtrueにすることで、ログアウト操作をしない限りログイン状態が維持される
             $this->guard()->login($user, true);
-            return $this->sendLoginResponse($request);
+            return $this->sendLoginResponse($request)
+            ->with('flash_message', 'ログインしました！');
         }
 
         return redirect()->route('register.{provider}', [
@@ -70,5 +71,17 @@ class LoginController extends Controller
             //$providerUser->tokenではProviderから発行されたトークンが返る
             'token' => $providerUser->token,
         ]);
+    }
+    
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return $this->loggedOut($request) ?: redirect('/')
+            ->with('flash_message', 'ログアウトしました！');
     }
 }

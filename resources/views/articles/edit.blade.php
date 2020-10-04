@@ -4,7 +4,7 @@
 @include('nav')
 
 @section('content')
-    <div class="cotainer">
+    <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="card mt-3">

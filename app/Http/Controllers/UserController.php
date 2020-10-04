@@ -19,7 +19,8 @@ class UserController extends Controller
     //!!nameにはフォローされる側の名前が入る!!
     public function follow(Request $request, string $name)
     {
-        $user = User::where('name', $name)->first();
+        $user = User::where('name', $name)->first()
+            ->load(['followings.followers']);
 
         if($user->id === $request->user()->id)
         {
@@ -35,7 +36,8 @@ class UserController extends Controller
 
     public function unfollow(Request $request, string $name)
     {
-        $user = User::where('name', $name)->first();
+        $user = User::where('name', $name)->first()
+            ->load(['followers.followers']);
 
         if($user->id === $request->user()->id)
         {
@@ -48,7 +50,8 @@ class UserController extends Controller
 
     public function likes(string $name)
     {
-        $user = User::where('name', $name)->first();
+        $user = User::where('name', $name)->first()
+            ->load(['likes.user', 'likes.likes', 'likes.tags']);
         $articles = $user->likes->sortByDesc('created_at');
         return view('users.likes', ['user' => $user, 'articles' => $articles]);
     }

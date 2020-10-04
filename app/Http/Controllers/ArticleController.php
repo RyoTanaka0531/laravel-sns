@@ -46,7 +46,7 @@ class ArticleController extends Controller
             $tag = Tag::firstOrCreate(['name' => $tagName]);
             $article->tags()->attach($tag);
         });
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('flash_message','投稿が完了しました');
     }
 
     public function edit(Article $article)
@@ -78,13 +78,13 @@ class ArticleController extends Controller
             $tag = Tag::firstOrCreate(['name' => $tagName]);
             $article->tags()->attach($tag);
         });
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('flash_message','投稿を更新しました');
     }
 
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('flash_message','投稿を削除しました');
     }
 
     public function show(Article $article)
