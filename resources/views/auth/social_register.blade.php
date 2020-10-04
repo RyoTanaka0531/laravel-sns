@@ -14,7 +14,7 @@
                         <h2 class="h3 card-title text-center mt-2">ユーザー登録</h2>
                         @include('error_card_list')
                         <div class="card-text">
-                            <form action="" method="post">
+                            <form action="{{route('register.{provider}', ['provider' => $provider])}}" method="post">
                                 @csrf
                                 <input type="hidden" name="token" value="{{$token}}">
                                 <div class="md-form">
