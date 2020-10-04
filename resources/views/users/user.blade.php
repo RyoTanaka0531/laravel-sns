@@ -13,6 +13,13 @@
             >
             </follow-button>
         @endif
+        @if (Auth::id() === $user->id)
+            <button type="button" class="ml-auto btn btn-primary p-2">
+                <a class="text-white" href="{{route('users.edit', ['name' => $user->name])}}">
+                    編集する
+                </a>
+            </button>
+        @endif
         </div>
         <h2 class="h5 card-title m-0">
         <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">

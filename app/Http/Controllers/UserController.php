@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Requests\UserRequest;
+
 
 class UserController extends Controller
 {
     //
+
     public function show(string $name)
     {
         $user = User::where('name', $name)->first()
@@ -68,5 +71,22 @@ class UserController extends Controller
         $user = User::where('name', $name)->first();
         $followers = $user->followers->sortByDesc('create_at');
         return view('users.followers', ['user' => $user, 'followers' => $followers]);
+    }
+
+    public function edit(string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $this->authorize('update', $user);
+        return view('users.edit', ['name' => $name, 'user' => $user]);
+    }
+
+    public function update(UserRequest $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $this->authorize('update', $user);
+        $user->fill($request->all())->save();
+
+        return redirect("/");
+
     }
 }
