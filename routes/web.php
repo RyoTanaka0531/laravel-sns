@@ -18,6 +18,9 @@ Route::prefix('login')->name('login.')->group(function(){
     //認証後にプロバイダーからのコールバックを受けるルート
     Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
 });
+Route::prefix('register')->name('register.')->group(function(){
+    Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+});
 
 Route::get('/', 'ArticleController@index')->name('articles.index');
 //middlewareを使い、未ログインユーザーのurl直打ちでの遷移を拒否している
