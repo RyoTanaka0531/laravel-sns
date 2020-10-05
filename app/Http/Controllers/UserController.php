@@ -84,7 +84,14 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
         $this->authorize('update', $user);
-        $user->fill($request->all())->save();
+        $user->fill($request->all());
+        // $user->name = $request->name;
+        // $user->users_profile = $request->users_profile;
+        if ($request->file('image')){
+            $path = $request->file('image')->store('public/img');
+            $user->image_path = basename($path);
+        }
+            $user->save();
 
         return redirect("/");
 

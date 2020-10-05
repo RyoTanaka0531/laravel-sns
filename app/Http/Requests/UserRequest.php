@@ -26,6 +26,7 @@ class UserRequest extends FormRequest
         return [
             //
             'name' => 'required|min:3|max:16',
+            'image_path' => 'image|file',
         ];
     }
 }

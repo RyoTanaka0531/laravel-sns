@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <div class="mt-3">
             <img class="rounded-circle d-block mx-auto" width="100" height="100" id="thumbnail" :src="uploadedImage" v-show="uploadedImage">
@@ -9,6 +9,11 @@
 </template>
 <script>
 export default {
+    props:{
+        initialUploadedImage:{
+            type: String,
+        },
+    },
     data() {
         return {
             uploadedImage: this.initialUploadedImage,

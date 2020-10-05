@@ -1,7 +1,11 @@
 <div class="card mt-3">
     <div class="card-body d-flex flex-row">
         <a href="{{route('users.show', ['name' => $article->user->name])}}" class="text-dark">
-            <i class="fas fa-user-circle fa-3x mr-1"></i>
+            @if ($article->user->image_path)
+                <img src="{{ asset('storage/img/' . $article->user->image_path) }}" class="rounded-circle d-block mx-auto" width="50" height="50" id="thumbnail">
+            @else
+                <i class="fas fa-user-circle fa-3x"></i>
+            @endif
         </a>
         <div>
             <div class="font-weight-bold">

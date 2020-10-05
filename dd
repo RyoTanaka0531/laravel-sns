@@ -1,0 +1,8 @@
+ id |   name   |          email          | email_verified_at |                           password                           |                        remember_token                        |     created_at      |     updated_at      | profile  |    thumbnail    
+----+----------+-------------------------+-------------------+--------------------------------------------------------------+--------------------------------------------------------------+---------------------+---------------------+----------+-----------------
+  3 | foo1     | foo@example.com         |                   | $2y$10$S7H8UFAUIrpQGkkumFnix.HZXfe6zMw4aDVkYi07x6ccQy46/.NQq | N1t54vCOQ03mM0qgu3yBUtyWmbcSusz7cafP578HY4OtkQyMcO583AqzEj1X | 2020-09-29 13:25:42 | 2020-10-05 14:33:45 | 始め待て | 006 (2) (6).jpg
+  4 | bar      | bar@example.com         |                   | $2y$10$G9Gg7sAeecMRpThLYnw4OOZQ.bvcyN.sH1ZSDackQ5w.hpVG6JMyW | MOqpi9k91dQDVJDR29lJvGPy8BqXb8qWyRwjKDajRag5gJJNecS4My7IlQVn | 2020-09-29 22:12:21 | 2020-09-29 22:12:21 |          | 
+  5 | ryo19    | ch5cxcxxh@gmail.com     |                   | $2y$10$y2hytGx.jBRGsKV.t1kXR.PbtiDxJhFFjx1z1jkerJTwz1GFZ1MZe | un9ANhlaB0yV71h8bWw6aPN36YzbxbGyYaRbg4g4ohFNvIHZ4yFTib1ctQe8 | 2020-09-30 11:50:16 | 2020-10-04 19:07:26 |          | 
+  7 | bigg1993 | big.g.big1993@gmail.com |                   |                                                              | 2aUEolSoUhGy6dxvjFZIO6oowU3z8IHK7WFgBkxzouZFlP596xlDnStdg3D5 | 2020-10-04 11:09:32 | 2020-10-04 11:09:32 |          | 
+(4 rows)
+
