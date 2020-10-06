@@ -35,5 +35,9 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('APP_URL').'/login/google/callback',
     ],
+    
+    'google-map' => [
+        'apikey' => env('GOOGLE_MAP_API'),
+    ],
 
 ];

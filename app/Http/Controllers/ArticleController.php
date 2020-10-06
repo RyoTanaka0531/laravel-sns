@@ -118,4 +118,9 @@ class ArticleController extends Controller
             'countLikes' => $article->count_likes,
         ];
     }
+
+    public function map(Article $article)
+    {
+        return view('articles.map');
+    }
 }

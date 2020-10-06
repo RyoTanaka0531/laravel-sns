@@ -7,7 +7,7 @@
     @include('flash')
     @include('error_card_list')
     <div class="container">
-        @include('articles.card')
+        @include('articles.card2')
         <div class="card-body">コメント一覧</div>
         @foreach ($article->comments as $comment)
         <div class="card mt-3">
@@ -57,5 +57,6 @@
                 </div>
             </div>
         @endauth
-    </div>
+
+</div>
 @endsection

@@ -31,6 +31,7 @@ Route::resource('/articles', 'ArticleController')->only(['show']);
 Route::prefix('articles')->name('articles.')->group(function(){
     Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
     Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
+    Route::get('/{artilce}/map', 'ArticleController@map')->name('map');
 });
 //URLでlocalhost/tag/PHPのようにtagの名前が入る形式にするため{name}となる
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
@@ -47,5 +48,6 @@ Route::prefix('users')->name('users.')->group(function(){
     });
 });
 Route::resource('comment', 'CommentController')->only(['store']);
+
 
 // Route::resource('/users', 'UserController')->only(['edit', 'update'])->middleware('auth');

@@ -31,6 +31,8 @@ class ArticleRequest extends FormRequest
             'body' => 'required|max:500',
             //スペースと/を含ませないようにする
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
+            'area' => 'required',
+            'date' => 'required',
         ];
     }
 
@@ -41,6 +43,8 @@ class ArticleRequest extends FormRequest
             'title' => 'タイトル',
             'body' => '本文',
             'tags' => 'タグ',
+            'area' => '実施場所',
+            'date' => '開催日時'
         ];
     }
 

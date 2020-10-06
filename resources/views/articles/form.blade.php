@@ -5,6 +5,7 @@
     <input type="text" name="title" class="form-control" required value="{{$article->title ?? old('title')}}">
 </div>
 <div class="form-group">
+    <label for="tags">タグ</label>
     <article-tags-input
     {{-- このformはcreateアクションでも使用され、createでは$tagNamesを渡せない
         なので、$tagNamesがnullだった時には空の配列をコンポーネントに渡せるように考慮している --}}
@@ -15,6 +16,15 @@
     </article-tags-input>
 </div>
 <div class="form-group">
-    <label></label>
-    <textarea name="body" required class="form-control" row="16" placeholder="本文">{{$article->body ?? old('body')}}</textarea>
+    <label for="date">実施時間</label>
+    <input type="text" name="date" id="date" class="form-control" placeholder="例10月10日　16:00~">
+</div>
+<div class="form-group">
+    <label for="area">実施場所</label>
+    <input type="text" name="area" id="area" class="form-control" placeholder="例)〇〇体育館">
+</div>
+
+<div class="form-group">
+    <label for="body">参加者へのメッセージ</label>
+    <textarea name="body" required class="form-control" row="16" placeholder="例）初心者ですがよろしくお願いします！">{{$article->body ?? old('body')}}</textarea>
 </div>

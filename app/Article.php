@@ -13,6 +13,8 @@ class Article extends Model
     protected $fillable = [
         'title',
         'body',
+        'area',
+        'date',
     ];
 
     // :BelongsToという記述はuserメソッドの戻り値の「型」を宣言している
