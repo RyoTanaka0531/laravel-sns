@@ -5,6 +5,7 @@ import ArticleLike from './components/ArticleLike'
 import ArticleTagsInput from './components/ArticleTagsInput'
 import FollowButton from './components/FollowButton'
 import ThumbnailArea from './components/ThumbnailComponent'
+import GoogleMap from './components/GoogleMap'
 
 const app = new Vue({
     el: '#app',
@@ -13,5 +14,6 @@ const app = new Vue({
     ArticleTagsInput,
     FollowButton,
     ThumbnailArea,
+    GoogleMap,
     }
 })

@@ -1,6 +1,10 @@
 <template>
-    <div id="map" class="map"></div>
 </template>
+    <style>
+        #map{
+            height: 600px;
+        }
+    </style>
     <script>
         function initMap(){
             var MyLatLng = new google.maps.LatLng(35.465700, 139.622138); //経度と緯度を指定
@@ -18,4 +22,3 @@
             var marker = new google.maps.Marker(markerOptions);
         }
     </script>
-        <script defer src="http://maps.google.com/maps/api/js?key={{config('services.google-map.apikey')}}&callback=initMap"></script>
