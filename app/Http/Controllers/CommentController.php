@@ -14,7 +14,6 @@ class CommentController extends Controller
     public function store(CommentRequest $request, Comment $comment)
     {
         $comment->fill($request->all());
-        // $request->user()->comments()->save($comment);
         $comment->save();
         return redirect()->route('articles.show', ['article' => $comment->article])
             ->with('flash_message', 'コメントを投稿しました');
@@ -29,6 +28,5 @@ class CommentController extends Controller
     //     $params = $request->all();
     //     return $params;
     //     return redirect()->route('articles.show', ['id' => $request->article_id]);
-
     // }
 }

@@ -27,7 +27,6 @@ class CommentRequest extends FormRequest
             'message' => 'required|max:20',
             'article_id' => 'required',
             'user_id' => 'required',
-            //
         ];
     }
 
