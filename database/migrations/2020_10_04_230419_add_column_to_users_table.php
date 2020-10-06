@@ -15,11 +15,11 @@ class AddColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('users_profile')->nullable();
-            $table->string('image_path')->nullable();
+            $table->string('prof')->nullable();
+            $table->string('image')->nullable();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
@@ -28,6 +28,8 @@ class AddColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('profile')->nullable();
+            $table->string('image_path')->nullable();
             //
         });
     }

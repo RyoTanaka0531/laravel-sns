@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'users_profile', 'image_path'
+        'name', 'email', 'password', 'prof', 'image'
     ];
 
     /**
@@ -88,5 +88,8 @@ class User extends Authenticatable
         return $this->followings->count();
     }
 
-
+    public function comments():BelongsToMany
+    {
+        return $this->belongsToMany('App\Article', 'commnets');
+    }
 }

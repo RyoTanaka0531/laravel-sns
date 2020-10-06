@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Tag;
 use App\Http\Requests\ArticleRequest;
+use App\Comment;
 
 class ArticleController extends Controller
 {
@@ -91,6 +92,7 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
+        $article->comments = Comment::where('article_id', $article->id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('articles.show', ['article' => $article]);
     }
 

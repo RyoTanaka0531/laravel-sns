@@ -86,10 +86,9 @@ class UserController extends Controller
         $this->authorize('update', $user);
         $user->fill($request->all());
         // $user->name = $request->name;
-        // $user->users_profile = $request->users_profile;
         if ($request->file('image')){
             $path = $request->file('image')->store('public/img');
-            $user->image_path = basename($path);
+            $user->image = basename($path);
         }
             $user->save();
 

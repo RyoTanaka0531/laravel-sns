@@ -2,7 +2,11 @@
     <div class="card-body">
         <div class="d-flex flex-row">
             <a href="{{route('users.show', ['name' => $person->name])}}" class="text-dark">
-                <i class="fas fa-user-circle fa-3x"></i>
+                @if ($person->image)
+                    <img src="{{ asset('storage/img/' . $person->image) }}" class="rounded-circle d-block mx-auto" width="50" height="50" id="thumbnail">
+                @else
+                    <i class="fas fa-user-circle fa-3x"></i>
+                @endif
             </a>
             @if (Auth::id() !== $person->id)
                 <follow-button

@@ -46,6 +46,6 @@ Route::prefix('users')->name('users.')->group(function(){
         Route::delete('/{name}/follow', 'UserController@unfollow')->name('unfollow');
     });
 });
-Route::post('/{comment}')
+Route::resource('comment', 'CommentController')->only(['store']);
 
 // Route::resource('/users', 'UserController')->only(['edit', 'update'])->middleware('auth');

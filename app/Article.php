@@ -56,4 +56,9 @@ class Article extends Model
     {
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
+
+    public function comments():BelongsToMany
+    {
+        return $this->belongsToMany('App\User', 'comments')->withTimestamps();
+    }
 }

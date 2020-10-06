@@ -2,8 +2,8 @@
     <div class="card-body">
         <div class="d-flex flex-row">
         <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-            @if ($user->image_path)
-                <img src="{{ asset('storage/img/' . $user->image_path) }}" class="rounded-circle d-block mx-auto" width="50" height="50" id="thumbnail">
+            @if ($user->image)
+                <img src="{{ asset('storage/img/' . $user->image) }}" class="rounded-circle d-block mx-auto" width="50" height="50" id="thumbnail">
             @else
                 <i class="fas fa-user-circle fa-3x"></i>
             @endif
@@ -33,7 +33,7 @@
     </div>
     <div class="card-body">
         <div class="card-text">
-            {{$user->users_profile}}
+            {{$user->prof}}
         </div>
     </div>
     <div class="card-body">
