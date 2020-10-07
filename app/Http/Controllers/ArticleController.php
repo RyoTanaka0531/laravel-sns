@@ -121,6 +121,7 @@ class ArticleController extends Controller
 
     public function map(Article $article)
     {
-        return view('articles.map');
+        $article = Article::where('id', $article->id);
+        return view('articles.map', ['article' => $article]);
     }
 }

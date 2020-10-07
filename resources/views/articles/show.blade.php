@@ -40,6 +40,9 @@
         <div class="row justify-content-center mt-3">
             {{$article->comments->links()}}
         </div>
+        <div class="card">
+            @include('articles.map2')
+        </div>
         @auth
             <div class="card mt-3">
                 <div class="card-body pt-0">
