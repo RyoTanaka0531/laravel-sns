@@ -1,7 +1,4 @@
-<input type="hidden" id="keyword" name="keyword" value="{{$article->area}}">
-{{-- <button id="search" data-toggle="modal" data-target="#modal2">場所はこちら</button> --}}
-
-
+<input type="hidden" id="keyword" value="{{$article->area}}">
 <button id="search" type="button" class="btn peach-gradient btn-block" data-toggle="modal" data-target="#modal1">
     実施場所をマップで確認
 </button>
@@ -25,7 +22,6 @@
         </div>
     </div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{config('services.google-map.apikey')}}&callback=initMap" async defer></script>
 <script>
 var map;
 var marker;
@@ -66,19 +62,17 @@ function initMap() {
                 bounds.extend(latlng);
                 // マーカーのセット
                 setMarker(latlng);
-                // マーカーへの吹き出しの追加
-                // setInfoW(place, latlng, address);
                 // マーカーにクリックイベントを追加
                 markerEvent();
                 }
             }
             map.fitBounds(bounds);
-            map.setZoom(16);
+            map.setZoom(18);
             } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-            alert("場所が見つかりません。住所で入力してみて下さい。");
+            alert("場所が見つかりません。主催者に確認して下さい。");
             } else {
             console.log(status);
-            alert("エラー発生");
+            alert("");
             }
         });
     });
@@ -86,31 +80,11 @@ function initMap() {
 
 // マーカーのセットを実施する
 function setMarker(setplace) {
-    // // 既にあるマーカーを削除
-    // deleteMakers();
-
-    // var iconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
     marker = new google.maps.Marker({
         position: setplace,
         map: map,
-        // icon: iconUrl
     });
 }
-
-    //マーカーを削除する
-    // function deleteMakers() {
-    // if(marker != null){
-    //     marker.setMap(null);
-    // }
-    // marker = null;
-    // }
-
-    // マーカーへの吹き出しの追加
-    // function setInfoW(place, latlng, address) {
-    //     infoWindow = new google.maps.InfoWindow({
-    //     content: "<a href='http://www.google.com/search?q=" + place + "' target='_blank'>" + place + "</a><br><br>" + latlng + "<br><br>" + address + "<br><br><a href='http://www.google.com/search?q=" + place + "&tbm=isch' target='_blank'>画像検索 by google</a>"
-    // });
-    // }
 
 // クリックイベント
 function markerEvent() {

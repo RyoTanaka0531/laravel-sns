@@ -30,7 +30,7 @@
     {{-- MDB core JavaScript --}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
 
-    {{-- <script defer src="https://maps.googleapis.com/maps/api/geocode/json?address=東京都渋谷区代々木１丁目４２−１２&key={{config('services.google-map.apikey')}}"></script> --}}
-        {{-- <script defer src="http://maps.google.com/maps/api/js?key={{config('services.google-map.apikey')}}"></script> --}}
+    {{-- googlemap --}}
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{config('services.google-map.apikey')}}&callback=initMap" async defer></script>
 </body>
 </html>
