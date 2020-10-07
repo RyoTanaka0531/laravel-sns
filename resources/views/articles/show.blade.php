@@ -8,6 +8,9 @@
     @include('error_card_list')
     <div class="container">
         @include('articles.card2')
+        <div class="card">
+            @include('articles.map2')
+        </div>
         <div class="card-body">コメント一覧</div>
         @foreach ($article->comments as $comment)
         <div class="card mt-3">
@@ -39,9 +42,6 @@
         @endforeach
         <div class="row justify-content-center mt-3">
             {{$article->comments->links()}}
-        </div>
-        <div class="card">
-            @include('articles.map2')
         </div>
         @auth
             <div class="card mt-3">

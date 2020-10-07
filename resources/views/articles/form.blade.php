@@ -17,11 +17,11 @@
 </div>
 <div class="form-group">
     <label for="date">実施時間</label>
-    <input type="text" name="date" id="date" class="form-control" placeholder="例10月10日　16:00~">
+    <input type="text" name="date" id="date" class="form-control" required value="{{$article->date ?? old('date')}}" placeholder="例10月10日　16:00~">
 </div>
 <div class="form-group">
     <label for="area">実施場所</label>
-    <input type="text" name="area" id="area" class="form-control" placeholder="例)〇〇体育館">
+    <input type="text" name="area" id="area" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館">
 </div>
 
 <div class="form-group">
