@@ -86,7 +86,7 @@
         </div>
     </div>
     <div class="card-body pt-0 pb-2 pl-3">
-        <div class="card-text">
+        <div class="card-text" style="display: inline-block">
             <article-like
             :initial-is-liked-by='@json($article->isLikedBy(Auth::user()))'
             :initial-count-likes='@json($article->count_likes)'
@@ -94,6 +94,9 @@
             endpoint="{{route('articles.like', ['article' => $article])}}"
             >
             </article-like>
+        </div>
+        <div class="card-text" style="display: inline-block">
+            <i class="fas fa-comment-dots mt-1 pr-2 pl-4 fa-2x" style="color: limegreen"></i>{{$article->comments->count()}}
         </div>
     </div>
     @foreach ($article->tags as $tag)

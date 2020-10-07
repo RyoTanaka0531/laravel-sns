@@ -5,7 +5,7 @@
             class="btn m-0 p-1 shadow-none"
         >
             <!-- プロパティの値がtrueの時、キーのクラスが適用される -->
-            <i class="fas fa-heart mr-1"
+            <i class="fas fa-heart mr-1 fa-2x"
             :class="{'red-text':this.isLikedBy, 'animated heartBeat fast':this.gotToLike}"
             @click="clickLike"
             />

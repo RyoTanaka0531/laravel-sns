@@ -7,9 +7,9 @@
     @include('flash')
     @include('error_card_list')
     <div class="container">
-        @include('articles.card2')
+        @include('articles.card_show')
         <div class="card">
-            @include('articles.map2')
+            @include('articles.map')
         </div>
         <div class="card-body">コメント一覧</div>
         @foreach ($article->comments as $comment)

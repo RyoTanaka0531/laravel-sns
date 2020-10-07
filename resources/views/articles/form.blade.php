@@ -99,7 +99,7 @@
                 map.fitBounds(bounds);
                 map.setZoom(17);
                 } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-                alert("場所が見つかりません。住所で入力してみて下さい。");
+                alert("場所が見つかりません。住所で入力し、再度お試しください。");
                 } else if (status == google.maps.GeocoderStatus.INVALID_REQUEST) {
                 alert("実施場所が未入力です。");
                 } else {
