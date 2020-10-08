@@ -17,12 +17,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">OK</button>
             </div>
         </div>
     </div>
 </div>
-{{-- <script>
+<script>
 var map;
 var marker;
 var infoWindow;
@@ -93,4 +92,4 @@ function markerEvent() {
     });
 }
 
-</script> --}}
+</script>

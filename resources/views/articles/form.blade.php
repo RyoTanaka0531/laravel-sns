@@ -5,7 +5,7 @@
     <input type="text" name="title" class="form-control" required value="{{$article->title ?? old('title')}}">
 </div>
 <div class="form-group">
-    <label for="tags">タグ</label>
+    <label for="tags">種目名や最寄り駅・地域名を入力してください</label>
     <article-tags-input
     {{-- このformはcreateアクションでも使用され、createでは$tagNamesを渡せない
         なので、$tagNamesがnullだった時には空の配列をコンポーネントに渡せるように考慮している --}}
