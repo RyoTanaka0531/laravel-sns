@@ -86,7 +86,7 @@
     </div>
     <div class="ml-auto card-text">
         ジャンル:
-        <a href="">
+        <a href="{{route('genres.show', ['name' => $article->genre->name])}}">
             {{$article->genre->name}}
         </a>
     </div>
