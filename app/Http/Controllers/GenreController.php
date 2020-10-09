@@ -46,9 +46,10 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $name)
     {
-        //
+        $genre = Genre::where('name', $name)->first();
+        return view('genres.show', ['genre' => $genre]);
     }
 
     /**
