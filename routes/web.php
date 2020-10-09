@@ -48,6 +48,6 @@ Route::prefix('users')->name('users.')->group(function(){
     });
 });
 Route::resource('comment', 'CommentController')->only(['store']);
-
+Route::get('genres', 'GenreController@index')->name('genres');
 
 // Route::resource('/users', 'UserController')->only(['edit', 'update'])->middleware('auth');

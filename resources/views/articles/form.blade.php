@@ -4,6 +4,15 @@
     {{-- null合体演算子は 式1 ?? 式２ の形式で記述し、式1がnullでない場合、式1が結果となり、式1がnullの場合、式2が結果となる --}}
     <input type="text" name="title" class="form-control" required value="{{$article->title ?? old('title')}}">
 </div>
+<div class="md-form">
+    <label for="genre">スポーツのジャンル選択</label><br><br>
+    <select name="genre" id="genre" class="form-control">
+        <option selected>選択して下さい</option>
+        @foreach ($genres as $genre)
+            <option>{{$genre->name}}</option>
+        @endforeach
+    </select>
+</div>
 <div class="form-group">
     <label for="tags">種目名や最寄り駅・地域名を入力してください</label>
     <article-tags-input

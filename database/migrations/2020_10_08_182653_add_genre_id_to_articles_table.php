@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToUsersTable extends Migration
+class AddGenreIdToArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class AddColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->string('prof')->nullable();
-            $table->string('image')->nullable();
+        Schema::table('articles', function (Blueprint $table) {
+            $table->bigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -27,9 +26,7 @@ class AddColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            // $table->string('profile')->nullable();
-            // $table->string('image_path')->nullable();
+        Schema::table('articles', function (Blueprint $table) {
             //
         });
     }

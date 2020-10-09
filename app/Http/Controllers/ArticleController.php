@@ -7,6 +7,7 @@ use App\Article;
 use App\Tag;
 use App\Http\Requests\ArticleRequest;
 use App\Comment;
+use App\Genre;
 
 class ArticleController extends Controller
 {
@@ -31,8 +32,10 @@ class ArticleController extends Controller
         $allTagNames = Tag::all()->map(function($tag){
             return ['text' => $tag->name];
         });
+        $genres = Genre::all();
         return view('articles.create', [
             'allTagNames' => $allTagNames,
+            'genres' => $genres,
         ]);
     }
 

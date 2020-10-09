@@ -33,6 +33,7 @@ class ArticleRequest extends FormRequest
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
             'area' => 'required',
             'date' => 'required',
+            'genre_id' => 'required',
         ];
     }
 
