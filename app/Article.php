@@ -69,4 +69,9 @@ class Article extends Model
     {
         return $this->belongsTo('App\Genre');
     }
+
+    public function prefecture():BelongsTo
+    {
+        return $this->belongsTo('App\Prefecture');
+    }
 }

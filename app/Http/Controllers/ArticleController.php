@@ -80,7 +80,6 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, Article $article)
     {
         $article->fill($request->all())->save();
-        
         //detachメソッドに引数なしで利用する場合、中間テーブルのレコードは全削除される
         $article->tags()->detach();
         $request->tags->each(function ($tagName) use ($article){
@@ -132,8 +131,12 @@ class ArticleController extends Controller
         return view('articles.map', ['article' => $article]);
     }
 
-    public function search()
+    public function search(Request $request, Article $article)
     {
-        
+        $article = Article::where('name', $article->genre->name);
+        $article = Article::where('name', $article->genre->name)
+            ->where('area', $article->area)->get();
+
+        return view('articles.search', ['article' => $article]);
     }
 }
