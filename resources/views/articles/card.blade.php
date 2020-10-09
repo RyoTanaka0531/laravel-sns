@@ -62,13 +62,13 @@
     </div>
     <div class="card-body pt-0 pb-2">
         <h3 class="h4 card-title">
-            <a class="text-dark" href="{{route('articles.show', ['article' => $article])}}">
+            <a href="{{route('articles.show', ['article' => $article])}}">
                 {{$article->title}}
             </a>
         </h3>
-        <div class="card-text">
+        {{-- <div class="card-text">
             {!! nl2br(e($article->body)) !!}
-        </div>
+        </div> --}}
     </div>
     <div class="card-body pt-0 pb-2 pl-3">
         <div class="card-text" style="display: inline-block">
@@ -83,6 +83,12 @@
         <div class="card-text" style="display: inline-block">
             <i class="fas fa-comment-dots mt-1 pr-2 pl-4 fa-2x" style="color: limegreen"></i>{{$article->comments->count()}}
         </div>
+    </div>
+    <div class="ml-auto card-text">
+        ジャンル:
+        <a href="">
+            {{$article->genre->name}}
+        </a>
     </div>
     @foreach ($article->tags as $tag)
         @if ($loop->first)

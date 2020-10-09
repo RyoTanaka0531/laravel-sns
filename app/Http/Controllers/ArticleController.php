@@ -67,10 +67,12 @@ class ArticleController extends Controller
             return ['text' => $tag->name];
         });
 
+        $genres = Genre::all();
         return view('articles.edit', [
             'article' => $article,
             'tagNames' => $tagNames,
             'allTagNames' => $allTagNames,
+            'genres' => $genres,
         ]);
     }
 
@@ -95,6 +97,7 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
+        // $article->genre = Genre::whrere('article_id', $article->id);
         $article->comments = Comment::where('article_id', $article->id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('articles.show', ['article' => $article]);
     }

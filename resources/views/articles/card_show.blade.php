@@ -99,6 +99,12 @@
             <i class="fas fa-comment-dots mt-1 pr-2 pl-4 fa-2x" style="color: limegreen"></i>{{$article->comments->count()}}
         </div>
     </div>
+    <div class="ml-auto card-text">
+        ジャンル:
+        <a href="">
+            {{$article->genre->name}}
+        </a>
+    </div>
     @foreach ($article->tags as $tag)
         @if ($loop->first)
             <div class="card-body pt-0 pb-4 pl-3">
