@@ -131,4 +131,9 @@ class ArticleController extends Controller
         $article = Article::where('id', $article->id);
         return view('articles.map', ['article' => $article]);
     }
+
+    public function search()
+    {
+        
+    }
 }

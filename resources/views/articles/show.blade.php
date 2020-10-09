@@ -16,7 +16,11 @@
                 <div class="card">
                     @include('articles.map')
                 </div>
-                <div class="card-body">コメント一覧</div>
+                <div class="card-body">
+                    <h4>
+                        コメント一覧
+                    </h4>
+                </div>
                 @foreach ($article->comments as $comment)
                     <div class="card mt-3">
                         <div class="card-body d-flex flex-row">

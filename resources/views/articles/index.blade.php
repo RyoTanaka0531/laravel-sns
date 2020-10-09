@@ -3,6 +3,9 @@
 @section('content')
     @include('nav')
     @include('flash')
+        <div>
+            <form action=""></form>
+        </div>
         <div class="row">
             <div class="col-lg-3">
                 @include('sidebar')
