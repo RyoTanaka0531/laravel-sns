@@ -16,6 +16,9 @@ class Article extends Model
         'area',
         'date',
         'genre_id',
+        'prefecture_id',
+        'deadline',
+        'member',
     ];
 
     // :BelongsToという記述はuserメソッドの戻り値の「型」を宣言している

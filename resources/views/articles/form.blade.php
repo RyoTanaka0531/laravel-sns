@@ -5,8 +5,8 @@
     <input type="text" name="title" class="form-control" required value="{{$article->title ?? old('title')}}">
 </div>
 <div class="md-form">
-    <label for="genre_id">スポーツのジャンル選択</label><br><br>
-    <select name="genre_id" id="genre_id" class="form-control">
+    <label for="genre">スポーツのジャンル選択</label><br><br>
+    <select name="genre" id="genre" class="form-control">
         <option selected>選択して下さい</option>
         @foreach ($genres as $genre)
             <option value="{{$genre->id}}">{{$genre->name}}</option>

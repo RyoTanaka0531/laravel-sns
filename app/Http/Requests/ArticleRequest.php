@@ -33,7 +33,10 @@ class ArticleRequest extends FormRequest
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
             'area' => 'required',
             'date' => 'required',
-            'genre_id' => 'required',
+            'genre' => 'required',
+            'prefecture' => 'required',
+            'deadline' => 'required',
+            'member' => 'required|lte:50'
         ];
     }
 
@@ -45,7 +48,11 @@ class ArticleRequest extends FormRequest
             'body' => '本文',
             'tags' => 'タグ',
             'area' => '実施場所',
-            'date' => '開催日時'
+            'date' => '開催日時',
+            'genre' => 'スポーツのジャンル',
+            'prefecture' => '開催エリア',
+            'member' => '募集人数',
+            'deadline' => '締め切りの日程',
         ];
     }
 
