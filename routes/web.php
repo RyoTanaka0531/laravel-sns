@@ -50,5 +50,4 @@ Route::prefix('users')->name('users.')->group(function(){
 });
 Route::resource('comment', 'CommentController')->only(['store']);
 Route::get('/genres/{name}', 'GenreController@show')->name('genres.show');
-
-// Route::resource('/users', 'UserController')->only(['edit', 'update'])->middleware('auth');
+Route::get('/prefectures/{name}', 'PrefectureController@show')->name('prefectures.show');

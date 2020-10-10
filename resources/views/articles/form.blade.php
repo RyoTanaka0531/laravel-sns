@@ -4,10 +4,14 @@
     {{-- null合体演算子は 式1 ?? 式２ の形式で記述し、式1がnullでない場合、式1が結果となり、式1がnullの場合、式2が結果となる --}}
     <input type="text" name="title" class="form-control" required value="{{$article->title ?? old('title')}}">
 </div>
-<div class="md-form">
-    <label for="genre">スポーツのジャンル選択</label><br><br>
+<div class="form-group">
+    <label for="genre">スポーツのジャンル選択</label>
     <select name="genre_id" id="genre_id" class="form-control">
-        <option selected>選択して下さい</option>
+        @isset($article->genre->name)
+            <option selected value="{{$article->genre->id}}">{{$article->genre->name}}</option>
+        @else
+            <option selected value="">選択して下さい</option>
+        @endisset
         @foreach ($genres as $genre)
             <option value="{{$genre->id}}">{{$genre->name}}</option>
         @endforeach
@@ -31,7 +35,11 @@
 <div class="form-group">
     <label for="prefecture">開催エリア</label>
     <select name="prefecture_id" id="prefecture_id" class="form-control">
-        <option selected>選択して下さい</option>
+        @isset($article->prefecture->name)
+            <option selected value="{{$article->prefecture->id}}">{{$article->prefecture->name}}</option>
+        @else
+            <option selected value="">選択して下さい</option>
+        @endisset
         @foreach ($prefectures as $prefecture)
             <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
         @endforeach
@@ -40,10 +48,16 @@
 <div class="form-group">
     <label for="area">実施場所</label>
     {{-- <input type="text" name="area" id="area" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館"> --}}
-    <input type="text" name="area" id="keyword" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館">
-    <button id="search" type="button" class="btn peach-gradient btn-block" data-toggle="modal" data-target="#modal1">
-        マップで確認
-    </button>
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="text" name="area" id="keyword" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館">
+        </div>
+        <div class="col-lg-6">
+            <button id="search" type="button" class="btn peach-gradient btn-block" data-toggle="modal" data-target="#modal1">
+                マップで確認
+            </button>
+        </div>
+    </div>
     <div class="modal fade" id="modal1" tabindex="-1"
         role="dialog" aria-labelledby="label1" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -70,7 +84,11 @@
         <div class="form-group">
             <label for="member">募集人数</label>
             <select name="member" id="member" class="form-control">
-                <option selected>選択して下さい</option>
+                @isset($article->prefecture->name)
+                    <option selected value="{{$article->member}}">{{$article->member}}</option>
+                @else
+                    <option selected value="">選択して下さい</option>
+                @endisset
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -83,7 +101,12 @@
         <div class="form-group">
             <label for="fee">参加費</label>
             <select name="fee" id="fee" class="form-control">
-                <option selected>選択して下さい</option>
+                @isset($article->fee)
+                    <option selected value="{{$article->fee}}">{{$article->fee}}</option>
+                @else
+                    <option selected value="">選択して下さい</option>
+                @endisset
+                <option>無料</option>
                 <option>500円以内</option>
                 <option>1,000円以内</option>
                 <option>2,000円以内</option>
