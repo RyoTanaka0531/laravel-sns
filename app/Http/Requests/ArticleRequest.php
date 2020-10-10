@@ -36,7 +36,8 @@ class ArticleRequest extends FormRequest
             'genre_id' => 'required',
             'prefecture_id' => 'required',
             'deadline' => 'required',
-            'member' => 'required|lte:50'
+            'member' => 'required|lte:50',
+            'fee' => 'required'
         ];
     }
 
@@ -53,6 +54,7 @@ class ArticleRequest extends FormRequest
             'prefectureId' => '開催エリア',
             'member' => '募集人数',
             'deadline' => '締め切りの日程',
+            'fee' => '参加費',
         ];
     }
 

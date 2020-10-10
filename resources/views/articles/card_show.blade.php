@@ -82,7 +82,13 @@
             <div class="card-text">
                 <span>募集締め切り</span>
             </div>
-            {{$article->deadline->format('Y/m/d')}}まで
+            {{$article->deadline->format('Y年m月d日')}}まで
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <span>参加費</span>
+            </div>
+            {{$article->fee}}
         </div>
         <div class="card-body">
             <div class="card-text">

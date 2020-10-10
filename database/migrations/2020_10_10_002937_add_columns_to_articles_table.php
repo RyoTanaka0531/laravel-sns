@@ -18,6 +18,7 @@ class AddColumnsToArticlesTable extends Migration
             $table->foreign('prefecture_id')->references('id')->on('genres');
             $table->date('deadline');
             $table->integer('member');
+            $table->string('fee');
         });
     }
 

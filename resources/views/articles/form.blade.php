@@ -79,8 +79,26 @@
             </select>
         </div>
     </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-5">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="fee">参加費</label>
+            <select name="fee" id="fee" class="form-control">
+                <option selected>選択して下さい</option>
+                <option>500円以内</option>
+                <option>1,000円以内</option>
+                <option>2,000円以内</option>
+                <option>3,000円以内</option>
+                <option>4,000円以内</option>
+                <option>5,000円以内</option>
+                <option>6,000円以内</option>
+                <option>7,000円以内</option>
+                <option>8,000円以内</option>
+                <option>9,000円以内</option>
+                <option>10,000円以内</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-4">
         <div class="form-group">
             <label for="deadline">募集締め切り</label>
             <input type="date" name="deadline" id="deadline" class="form-control" required value="{{$article->deadline ?? old('deadline')}}">
