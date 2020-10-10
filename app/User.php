@@ -5,6 +5,7 @@ namespace App;
 use App\Mail\BareMail;
 use App\Notifications\PasswordResetNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +21,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'prof', 'image'
+        'name', 'email', 'password', 'prof', 'image', 'age',
+        'prefecture_id', 'genre_id', 'address', 'sex',
     ];
 
     /**
@@ -91,5 +93,15 @@ class User extends Authenticatable
     public function comments():BelongsToMany
     {
         return $this->belongsToMany('App\Article', 'commnets');
+    }
+
+    public function genres():BelongsToMany
+    {
+        return $this->belongsToMany('App\Genre');
+    }
+
+    public function prefecture():BelongsTo
+    {
+        return $this->belongsTo('App\Prefecture');
     }
 }

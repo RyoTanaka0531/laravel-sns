@@ -33,8 +33,9 @@
     </div>
     <div class="card-body">
         <div class="card-text">
-            {{$user->prof}}
+            自己紹介
         </div>
+        {{$user->prof}}
     </div>
     <div class="card-body">
         <div class="card-text">

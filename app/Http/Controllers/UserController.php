@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\UserRequest;
+use App\Genre;
+use App\Prefecture;
 
 
 class UserController extends Controller
@@ -76,8 +78,11 @@ class UserController extends Controller
     public function edit(string $name)
     {
         $user = User::where('name', $name)->first();
+        $genres = Genre::all();
+        $prefectures = Prefecture::all();
         $this->authorize('update', $user);
-        return view('users.edit', ['name' => $name, 'user' => $user]);
+        return view('users.edit', ['name' => $name, 'user' => $user,
+                                    'genres' => $genres, 'prefectures' => $prefectures ]);
     }
 
     public function update(UserRequest $request, string $name)

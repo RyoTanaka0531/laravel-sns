@@ -29,12 +29,44 @@
                                     <label for="name">ユーザー名</label>
                                     <input type="text" name="name" id="name" value="{{$user->name}}" class="form-control">
                                 </div>
+                                <div class="mt-3">
+                                    <label for="age">年齢</label>
+                                    <input type="text" name="age" id="age" value="{{$user->age ?? old('age')}}" class="form-control">
+                                </div>
+                                <div class="mt-3">
+                                    <label for="sex">性別</label>
+                                    <select name="sex" id="sex"class="form-control">
+                                        @isset($user->sex)
+                                            <option selected value="{{$user->sex}}">{{$user->sex}}</option>
+                                        @else
+                                            <option selected>選択して下さい</option>
+                                        @endisset
+                                        <option>男性</option>
+                                        <option>女性</option>
+                                    </select>
+                                </div>
+                                <div class="mt-3">
+                                    <label for="address">都道府県</label>
+                                    <select name="prefecture_id" id="prefecture_id" class="form-control">
+                                        @isset($record)
+                                            <option selected value="{{$user->prefecture->id}}">{{$user->prefecture->name}}</option>
+                                        @else
+                                            <option selected value="">選択して下さい</option>
+                                        @endisset
+                                        @foreach ($prefectures as $prefecture)
+                                            <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mt-3">
+                                    <label for="address">活動地域</label>
+                                    <input type="text" name="address" id="address" value="{{$user->address ?? old('address')}}"
+                                            class="form-control" placeholder="例) 横浜市西区">
+                                </div>
                                 <div class="py-4">
                                     <label for="prof">プロフィール</label>
                                     <textarea name="prof" id="prof" rows="4" class="form-control">{{$user->prof}}</textarea>
                                 </div>
-                                {{-- <input type="hidden" name="id" id="id" value="{{$user->id}}"> --}}
-                                {{-- <input type="text" name="prof" id="prof" value="{{$user->prof}}" class="form-control"> --}}
                                 <button type="submit" class="btn peach-gradient btn-block">更新する</button>
                             </form>
                         </div>

@@ -27,6 +27,10 @@ class UserRequest extends FormRequest
             //
             'name' => 'required|min:3|max:16',
             'image' => 'image|file',
+            'sex' => 'nullable',
+            'age' => 'nullable|integer|numeric|lte:100',
+            'prefecture_id' => 'nullable',
+            'genre_id' => 'nullable',
         ];
     }
 }
