@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Article extends Model
 {
+    //日付型データに変換
+    protected $dates = ['deadline'];
 
     //fillableを使うことでクライアント側からtitleやbody以外のパラメータを含んだ不正なリクエストを制限することができる
     protected $fillable = [

@@ -80,6 +80,12 @@
         </div>
         <div class="card-body">
             <div class="card-text">
+                <span>募集締め切り</span>
+            </div>
+            {{$article->deadline->format('Y/m/d')}}まで
+        </div>
+        <div class="card-body">
+            <div class="card-text">
                 <span>主催者からのメッセージ</span>
             </div>
             {!! nl2br(e($article->body)) !!}
@@ -99,11 +105,27 @@
             <i class="fas fa-comment-dots mt-1 pr-2 pl-4 fa-2x" style="color: limegreen"></i>{{$article->comments->count()}}
         </div>
     </div>
-    <div class="ml-auto card-text">
-        ジャンル:
-        <a href="{{route('genres.show', ['name' => $article->genre->name])}}">
-            {{$article->genre->name}}
-        </a>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-xs-2">
+            <div class="card-body">
+                <i class="fas fa-user mr-1"></i>{{$article->member}}人募集
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6"></div>
+        <div class="col-lg-2 col-md-3 col-xs-2">
+            <div class="card-text">
+                ジャンル:
+                <a href="{{route('genres.show', ['name' => $article->genre->name])}}">
+                    {{$article->genre->name}}
+                </a>
+            </div>
+            <div class="card-text">
+                開催エリア:
+                <a href="">
+                    {{$article->prefecture->name}}
+                </a>
+            </div>
+        </div>
     </div>
     @foreach ($article->tags as $tag)
         @if ($loop->first)

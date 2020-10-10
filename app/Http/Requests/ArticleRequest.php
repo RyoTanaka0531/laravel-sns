@@ -33,8 +33,8 @@ class ArticleRequest extends FormRequest
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
             'area' => 'required',
             'date' => 'required',
-            'genre' => 'required',
-            'prefecture' => 'required',
+            'genre_id' => 'required',
+            'prefecture_id' => 'required',
             'deadline' => 'required',
             'member' => 'required|lte:50'
         ];
@@ -49,8 +49,8 @@ class ArticleRequest extends FormRequest
             'tags' => 'タグ',
             'area' => '実施場所',
             'date' => '開催日時',
-            'genre' => 'スポーツのジャンル',
-            'prefecture' => '開催エリア',
+            'genreId' => 'スポーツのジャンル',
+            'prefectureId' => '開催エリア',
             'member' => '募集人数',
             'deadline' => '締め切りの日程',
         ];

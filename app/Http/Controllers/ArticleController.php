@@ -8,6 +8,7 @@ use App\Tag;
 use App\Http\Requests\ArticleRequest;
 use App\Comment;
 use App\Genre;
+use App\Prefecture;
 
 class ArticleController extends Controller
 {
@@ -34,9 +35,11 @@ class ArticleController extends Controller
             return ['text' => $tag->name];
         });
         $genres = Genre::all();
+        $prefectures = Prefecture::all();
         return view('articles.create', [
             'allTagNames' => $allTagNames,
             'genres' => $genres,
+            'prefectures' => $prefectures,
         ]);
     }
 
@@ -69,11 +72,13 @@ class ArticleController extends Controller
         });
 
         $genres = Genre::all();
+        $prefectures = Prefecture::all();
         return view('articles.edit', [
             'article' => $article,
             'tagNames' => $tagNames,
             'allTagNames' => $allTagNames,
             'genres' => $genres,
+            'prefectures' => $prefectures,
         ]);
     }
 

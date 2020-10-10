@@ -6,7 +6,7 @@
 </div>
 <div class="md-form">
     <label for="genre">スポーツのジャンル選択</label><br><br>
-    <select name="genre" id="genre" class="form-control">
+    <select name="genre_id" id="genre_id" class="form-control">
         <option selected>選択して下さい</option>
         @foreach ($genres as $genre)
             <option value="{{$genre->id}}">{{$genre->name}}</option>
@@ -29,6 +29,15 @@
     <input type="text" name="date" id="date" class="form-control" required value="{{$article->date ?? old('date')}}" placeholder="例10月10日　16:00~">
 </div>
 <div class="form-group">
+    <label for="prefecture">開催エリア</label>
+    <select name="prefecture_id" id="prefecture_id" class="form-control">
+        <option selected>選択して下さい</option>
+        @foreach ($prefectures as $prefecture)
+            <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
+        @endforeach
+    </select>
+</div>
+<div class="form-group">
     <label for="area">実施場所</label>
     {{-- <input type="text" name="area" id="area" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館"> --}}
     <input type="text" name="area" id="keyword" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館">
@@ -37,26 +46,47 @@
     </button>
     <div class="modal fade" id="modal1" tabindex="-1"
         role="dialog" aria-labelledby="label1" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                {{-- <h5 class="modal-title" id="label1">{{$article->area}}</h5> --}}
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="target" style="width: 770px; height: 600px"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">OK</button>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {{-- <h5 class="modal-title" id="label1">{{$article->area}}</h5> --}}
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="target" style="width: 770px; height: 600px"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">OK</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="member">募集人数</label>
+            <select name="member" id="member" class="form-control">
+                <option selected>選択して下さい</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-5">
+        <div class="form-group">
+            <label for="deadline">募集締め切り</label>
+            <input type="date" name="deadline" id="deadline" class="form-control" required value="{{$article->deadline ?? old('deadline')}}">
+        </div>
+    </div>
 </div>
-
 <div class="form-group">
     <label for="body">参加者へのメッセージ</label>
     <textarea name="body" required class="form-control" row="16" placeholder="例）初心者ですがよろしくお願いします！">{{$article->body ?? old('body')}}</textarea>
