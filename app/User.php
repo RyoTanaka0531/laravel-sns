@@ -104,4 +104,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Prefecture');
     }
+
+    public function getUserAreaAttribute():string
+    {
+        return $this->prefecture->name.$this->address;
+    }
 }

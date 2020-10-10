@@ -45,23 +45,33 @@
                                         <option>女性</option>
                                     </select>
                                 </div>
-                                <div class="mt-3">
-                                    <label for="address">都道府県</label>
-                                    <select name="prefecture_id" id="prefecture_id" class="form-control">
-                                        @isset($record)
-                                            <option selected value="{{$user->prefecture->id}}">{{$user->prefecture->name}}</option>
-                                        @else
-                                            <option selected value="">選択して下さい</option>
-                                        @endisset
-                                        @foreach ($prefectures as $prefecture)
-                                            <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
-                                        @endforeach
-                                    </select>
+                                <label for="user_area" class="mt-3">活動地域</label>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <select name="prefecture_id" id="prefecture_id" class="form-control">
+                                            @isset($user->prefecture)
+                                                <option selected value="{{$user->prefecture->id}}">{{$user->prefecture->name}}</option>
+                                            @else
+                                                <option selected value="">都道府県を選択して下さい</option>
+                                            @endisset
+                                            @foreach ($prefectures as $prefecture)
+                                                <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                            <input type="text" name="address" id="address" value="{{$user->address ?? old('address')}}"
+                                                    class="form-control" placeholder="例) 横浜市西区">
+                                    </div>
                                 </div>
                                 <div class="mt-3">
-                                    <label for="address">活動地域</label>
-                                    <input type="text" name="address" id="address" value="{{$user->address ?? old('address')}}"
-                                            class="form-control" placeholder="例) 横浜市西区">
+                                    <label for="genre_id">興味のあるスポーツ</label>
+                                    <div>
+                                        @foreach ($genres as $genre)
+                                            <input type="checkbox" name="genre_id" value="{{$genre->id}}">
+                                            <span class="mr-4">{{$genre->name}}</span>
+                                        @endforeach
+                                    </div>
                                 </div>
                                 <div class="py-4">
                                     <label for="prof">プロフィール</label>

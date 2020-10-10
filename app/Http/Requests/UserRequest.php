@@ -31,6 +31,16 @@ class UserRequest extends FormRequest
             'age' => 'nullable|integer|numeric|lte:100',
             'prefecture_id' => 'nullable',
             'genre_id' => 'nullable',
+            'prof' => 'nullable|max:150',
+        ];
+    }
+
+    public function attributes()
+    {
+        return[
+            'sex' => '性別',
+            'age' => '年齢',
+            'prof' => '自己紹介',
         ];
     }
 }

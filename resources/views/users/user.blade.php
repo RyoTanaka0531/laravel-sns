@@ -38,6 +38,38 @@
         {{$user->prof}}
     </div>
     <div class="card-body">
+        <div class="card-text mr-3" style="display: inline-block">
+            年齢
+        </div>
+        <div style="display: inline-block">
+            {{$user->age}}歳
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-text mr-3" style="display: inline-block">
+            性別
+        </div>
+        <div style="display: inline-block">
+            {{$user->sex}}
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-text mr-3" style="display: inline-block">
+            活動地域
+        </div>
+        <div style="display: inline-block">
+            @if($user->user_area)
+                {{$user->user_area}}
+            @elseif($user->prefecture !== null)
+                {{$user->address}}
+            @elseif($user->address !== null)
+                {{$user->prefecture->name}}
+            @else
+                未設定
+            @endif
+        </div>
+    </div>
+    <div class="card-body">
         <div class="card-text">
             <a href="{{route('users.followings', ['name' => $user->name])}}" class="text-muted">
                 {{$user->count_followings}}フォロー
