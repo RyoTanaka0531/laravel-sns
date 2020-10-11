@@ -10,6 +10,7 @@ class PrefectureController extends Controller
     public function show(string $name)
     {
         $prefecture = Prefecture::where('name', $name)->first();
-        return view('prefectures.show', ['prefecture' => $prefecture]);
+        $now = now();
+        return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
     }
 }

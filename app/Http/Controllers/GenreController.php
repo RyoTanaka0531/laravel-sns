@@ -50,7 +50,8 @@ class GenreController extends Controller
     public function show(string $name)
     {
         $genre = Genre::where('name', $name)->first();
-        return view('genres.show', ['genre' => $genre]);
+        $now = now();
+        return view('genres.show', ['genre' => $genre, 'now' => $now]);
     }
 
     /**

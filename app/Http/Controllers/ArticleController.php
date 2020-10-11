@@ -23,11 +23,13 @@ class ArticleController extends Controller
     {
         $articles = Article::orderBy('created_at', 'DESC')->paginate(5);
         $genres = Genre::all();
+        $prefectures = Prefecture::all();
         $now = now();
         // $articles = Article::paginate(10)->sortByDesc('created_at');]
                 //遅延Eagerロードの使用
                 // ->load(['user', 'likes', 'tags']);
-        return view('articles.index', ['articles' => $articles, 'genres' => $genres, 'now' => $now]);
+        return view('articles.index', ['articles' => $articles, 'genres' => $genres,
+                                        'now' => $now, 'prefectures' => $prefectures]);
     }
 
     public function create()

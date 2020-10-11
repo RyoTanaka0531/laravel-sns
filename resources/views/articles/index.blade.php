@@ -9,10 +9,46 @@
             </div>
             <div class="col-lg-9">
                 <div class="container">
-                    @foreach($articles as $article)
-                    @include('articles.card')
-                    @endforeach
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div>
+                                <i class="fas fa-search mr-1"></i><span>募集情報を探す</span>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-2">
+                                    <div class="card-text">
+                                        <label for="keyword" class="mt-1">キーワード入力</label>
+                                        <label for="genre_id" class="mt-3">スポーツの種類</label>
+                                        <label for="prefecture_id" class="mt-3">開催エリア</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <form action="{{route('articles.index')}}" method="post">
+                                        @csrf
+                                        <input type="text" name="" id="" class="form-control" placeholder="キーワード">
+                                        <select name="genre_id" id="genre_id" class="form-control mt-2">
+                                            <option value="" selected>選択して下さい</option>
+                                            @foreach ($genres as $genre)
+                                                <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <select name="prefecture_id" id="prefecture_id" class="form-control mt-2">
+                                            <option value="" selected>選択して下さい</option>
+                                            @foreach ($prefectures as $prefecture)
+                                                <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 mt-5">
+                                        <button type="submit" class="btn peach-gradient">この条件で検索</button>
+                                    </form>
+                                </div>
+                            </div>
+                    </div><br><br>
                 </div>
+                @foreach($articles as $article)
+                    @include('articles.card')
+                @endforeach
                 <div class="row justify-content-center mt-3">
                     {{ $articles->links() }}
                 </div>
