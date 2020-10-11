@@ -12,14 +12,14 @@ use App\Prefecture;
 class UserController extends Controller
 {
     //
-
     public function show(string $name)
     {
+        $now = now();
         $user = User::where('name', $name)->first()
             ->load(['articles.user', 'articles.likes', 'articles.tags']);
         $articles = $user->articles->sortByDesc('created_at');
         // $genres = $user->genres->all();
-        return view('users.show', ['user' => $user, 'articles' => $articles]);
+        return view('users.show', ['user' => $user, 'articles' => $articles, 'now' => $now]);
     }
 
     //!!nameにはフォローされる側の名前が入る!!

@@ -1,4 +1,9 @@
 <div class="card mt-3">
+    @if ($article->deadline === $now)
+        <div class="card-body red-text">
+            こちらの募集は締め切りました。
+        </div>
+    @endif
     <div class="card-body d-flex flex-row">
         <a href="{{route('users.show', ['name' => $article->user->name])}}" class="text-dark">
             @if ($article->user->image)

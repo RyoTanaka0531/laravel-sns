@@ -23,10 +23,11 @@ class ArticleController extends Controller
     {
         $articles = Article::orderBy('created_at', 'DESC')->paginate(5);
         $genres = Genre::all();
+        $now = now();
         // $articles = Article::paginate(10)->sortByDesc('created_at');]
                 //遅延Eagerロードの使用
                 // ->load(['user', 'likes', 'tags']);
-        return view('articles.index', ['articles' => $articles, 'genres' => $genres]);
+        return view('articles.index', ['articles' => $articles, 'genres' => $genres, 'now' => $now]);
     }
 
     public function create()
@@ -104,7 +105,8 @@ class ArticleController extends Controller
     {
         $article->comments = Comment::where('article_id', $article->id)->orderBy('created_at', 'DESC')->paginate(10);
         $genres = Genre::all();
-        return view('articles.show', ['article' => $article, 'genres' => $genres]);
+        $now = now();
+        return view('articles.show', ['article' => $article, 'genres' => $genres, 'now' => $now]);
     }
 
     public function like(Request $request, Article $article)
