@@ -70,6 +70,23 @@
         </div>
     </div>
     <div class="card-body">
+        <div class="card-text mr-3" style="display: inline-block">
+            興味のあるスポーツ
+        </div>
+        <div style="display: inline-block">
+            @foreach($user->genres as $genre)
+                @if($loop->first)
+                    <div class="card-body pt-0 pb-4 pl-3">
+                    <div class="card-text line-height">
+                @endif
+                    {{ $genre->name }}
+                @if($loop->last)
+                    </div>
+                    </div>
+                @endif
+            @endforeach
+    </div>
+    <div class="card-body">
         <div class="card-text">
             <a href="{{route('users.followings', ['name' => $user->name])}}" class="text-muted">
                 {{$user->count_followings}}フォロー
