@@ -18,7 +18,6 @@ class UserController extends Controller
         $user = User::where('name', $name)->first()
             ->load(['articles.user', 'articles.likes', 'articles.tags']);
         $articles = $user->articles->sortByDesc('created_at');
-        // $genres = $user->genres->all();
         return view('users.show', ['user' => $user, 'articles' => $articles, 'now' => $now]);
     }
 
@@ -91,7 +90,6 @@ class UserController extends Controller
         $user = User::where('name', $name)->first();
         $this->authorize('update', $user);
         $user->fill($request->all());
-        // $user->name = $request->name;
         if ($request->file('image')){
             $path = $request->file('image')->store('public/img');
             $user->image = basename($path);
