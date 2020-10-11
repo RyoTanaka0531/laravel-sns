@@ -95,9 +95,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Article', 'commnets');
     }
 
-    public function genres():BelongsToMany
+    // public function genres():BelongsToMany
+    // {
+    //     return $this->belongsToMany('App\Genre');
+    // }
+    public function genre():BelongsTo
     {
-        return $this->belongsToMany('App\Genre');
+        return $this->belongsTo('App\Genre');
     }
 
     public function prefecture():BelongsTo

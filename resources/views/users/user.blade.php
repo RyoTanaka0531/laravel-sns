@@ -74,7 +74,8 @@
             興味のあるスポーツ
         </div>
         <div style="display: inline-block">
-            @foreach($user->genres as $genre)
+            {{-- 多対多の関係を定義する場合 --}}
+            {{-- @foreach($user->genres as $genre)
                 @if($loop->first)
                     <div class="card-body pt-0 pb-4 pl-3">
                     <div class="card-text line-height">
@@ -84,7 +85,8 @@
                     </div>
                     </div>
                 @endif
-            @endforeach
+            @endforeach --}}
+                {{$user->genre->name}}
     </div>
     <div class="card-body">
         <div class="card-text">

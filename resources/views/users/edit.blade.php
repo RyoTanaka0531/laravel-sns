@@ -67,10 +67,20 @@
                                 <div class="mt-3">
                                     <label for="genre_id">興味のあるスポーツ</label>
                                     <div>
-                                        @foreach ($genres as $genre)
-                                            <input type="checkbox" name="genre_id" value="{{$genre->id}}">
+                                        {{-- @foreach ($genres as $genre)
+                                            <input type="checkbox" name="genre_id[]" value="{{$genre->id}}">
                                             <span class="mr-4">{{$genre->name}}</span>
-                                        @endforeach
+                                        @endforeach --}}
+                                        <select name="genre_id" id="genre_id" class="form-control">
+                                            @isset ($user->genre)
+                                                <option value="{{$user->genre->id}}">{{$user->genre->name}}</option>
+                                            @else
+                                                <option value="" selected>選択して下さい</option>
+                                            @endisset
+                                            @foreach ($genres as $genre)
+                                                <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="py-4">

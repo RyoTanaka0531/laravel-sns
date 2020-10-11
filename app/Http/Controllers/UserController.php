@@ -18,8 +18,8 @@ class UserController extends Controller
         $user = User::where('name', $name)->first()
             ->load(['articles.user', 'articles.likes', 'articles.tags']);
         $articles = $user->articles->sortByDesc('created_at');
-        $genres = $user->genres->all();
-        return view('users.show', ['user' => $user, 'articles' => $articles, 'genres' => $genres]);
+        // $genres = $user->genres->all();
+        return view('users.show', ['user' => $user, 'articles' => $articles]);
     }
 
     //!!nameにはフォローされる側の名前が入る!!
@@ -86,7 +86,7 @@ class UserController extends Controller
                                     'genres' => $genres, 'prefectures' => $prefectures ]);
     }
 
-    public function update(UserRequest $request, string $name)
+    public function update(UserRequest $request, string $name, Genre $genre)
     {
         $user = User::where('name', $name)->first();
         $this->authorize('update', $user);
@@ -96,8 +96,7 @@ class UserController extends Controller
             $path = $request->file('image')->store('public/img');
             $user->image = basename($path);
         }
-            $user->save();
-
+        $user->save();
         return redirect("/");
 
     }
