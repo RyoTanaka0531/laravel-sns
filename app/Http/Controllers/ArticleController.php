@@ -142,12 +142,35 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
+        $keyword = $request->name;
+        $now = now();
+        $genres = Genre::all();
+        if (!empty($keyword)){
+            $articles = Article::where('name', 'like', '%'.$keyword.'%')->paginate(10);
+        }else{
+            $articles = Article::all();
+        }
+        return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
+
+
+
+        // $keyword = $request->name;
+        // if (Genre::where('name', 'like', '%'.$keyword.'%')){
+        //     $genre = Genre::where('name', 'like', '%'.$keyword.'%')->first();
+        //     return view('genres.show', ['genre' => $genre, 'now' => $now]);
+        // } elseif (Article::where('title', 'like', '%'.$keyword.'%')){
+        //     $articles = Article::where('title', 'like', '%'.$keyword.'%')->paginate(10);
+        //     $genres = Genre::all();
+        //     return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
+        // } elseif (Prefecture::where('name', 'like', '%'.$keyword.'%')){
+        //     $prefecture = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
+        //     return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
+        // }
         //ジャンル検索
         // $keyword = $request->name;
         // if(!empty($keyword)){
         //     $genre = Genre::where('name', 'like', '%'.$keyword.'%')->first();
         // }
-        // $now = now();
         // return view('genres.show', ['genre' => $genre, 'now' => $now]);
 
         //キーワード検索
@@ -161,12 +184,12 @@ class ArticleController extends Controller
         // return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
 
         //エリア検索
-        $keyword = $request->name;
-        if(!empty($keyword)){
-        $prefecture = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
-        }
-        $now = now();
-        return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
+        // $keyword = $request->name;
+        // if(!empty($keyword)){
+        // $prefecture = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
+        // }
+        // $now = now();
+        // return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
     }
 
 }

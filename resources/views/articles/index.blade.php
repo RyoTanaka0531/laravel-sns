@@ -26,7 +26,7 @@
                                     <div class="col-lg-4">
                                             @csrf
                                             @method('GET')
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="キーワード">
+                                            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
                                             {{-- <select name="genre_id" id="genre_id" class="form-control mt-2">
                                                 <option value="" selected>選択して下さい</option>
                                                 @foreach ($genres as $genre)
