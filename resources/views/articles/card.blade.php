@@ -1,7 +1,9 @@
-<div class="card mt-3">
-    @if ($article->deadline <= $now)
-        <div class="card-body red-text">
-            こちらの募集は締め切りました。
+<div class="card">
+    @if ($article->deadline === $now)
+        <div class="card-body">
+            <div class="red-text">
+                この募集は締め切りました。
+            </div>
         </div>
     @endif
     <div class="card-body d-flex flex-row">

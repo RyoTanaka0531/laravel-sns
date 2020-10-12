@@ -1,7 +1,7 @@
 @extends('app')
 @section('title', '募集一覧')
+@include('nav')
 @section('content')
-    @include('nav')
     @include('flash')
         <div class="row">
             <div class="col-lg-3">
@@ -23,9 +23,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <form action="{{route('articles.index')}}" method="post">
+                                    <form action="{{route('articles.index')}}" method="get">
                                         @csrf
-                                        <input type="text" name="" id="" class="form-control" placeholder="キーワード">
+                                        <input type="text" name="title" id="" class="form-control" placeholder="キーワード">
                                         <select name="genre_id" id="genre_id" class="form-control mt-2">
                                             <option value="" selected>選択して下さい</option>
                                             @foreach ($genres as $genre)
@@ -38,17 +38,20 @@
                                                 <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
                                             @endforeach
                                         </select>
-                                    </div>
-                                    <div class="col-lg-4 offset-lg-1 mt-5">
+                                </div>
+                                <div class="col-lg-4 offset-lg-1 mt-5">
                                         <button type="submit" class="btn peach-gradient">この条件で検索</button>
                                     </form>
                                 </div>
                             </div>
-                    </div><br><br>
+                        </div>
+                    </div>
                 </div>
-                @foreach($articles as $article)
-                    @include('articles.card')
-                @endforeach
+                <div class="mt-3">
+                    @foreach($articles as $article)
+                        @include('articles.card')
+                    @endforeach
+                </div>
                 <div class="row justify-content-center mt-3">
                     {{ $articles->links() }}
                 </div>

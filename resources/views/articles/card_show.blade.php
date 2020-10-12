@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="card">
     @if ($article->deadline <= $now)
         <div class="card-body red-text">
             こちらの募集は締め切りました。
