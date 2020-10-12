@@ -51,4 +51,4 @@ Route::prefix('users')->name('users.')->group(function(){
 Route::resource('comment', 'CommentController')->only(['store']);
 Route::get('/genres/{name}', 'GenreController@show')->name('genres.show');
 Route::get('/prefectures/{name}', 'PrefectureController@show')->name('prefectures.show');
-Route::get('/search', 'SearchController@show')->name('search.show');
+// Route::get('/search', 'SearchController@show')->name('search.show');

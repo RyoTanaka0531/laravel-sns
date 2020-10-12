@@ -140,12 +140,39 @@ class ArticleController extends Controller
         return view('articles.map', ['article' => $article]);
     }
 
-    public function search(Request $request, Article $article)
+    public function search(Request $request)
     {
-        $article = Article::where('name', $article->genre->name);
-        $article = Article::where('name', $article->genre->name)
-            ->where('area', $article->area)->get();
+        $keyword = $request->title;
+        if(!empty($keyword)){
+            $query = Article::query();
+            $articles = $query->where('title', 'like', '%'.$keyword.'%')->paginate(10);
+        }
+        $now = now();
+        $genres = Genre::all();
+        return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
 
-        return view('articles.search', ['article' => $article]);
+        // $articles = $request->Article::where('title', $article->title)->get();
+        // return view('articles.index', ['article' => $articles]);
+
+
+        // $search1 = $request->input('genre_id', $article->genre->name);
+        // $search2 = $request->input('prefecture_id', $article->prefecture->name);
+        // $search3 = $request->input('title');
+
+        // if ($request->has('genre_id') && $search1 != ('選択して下さい')){
+        //     Article::where('genre_id', $search1)->get();
+        // }
+
+        // if($request->has('prefecture_id') && $search2 != ('選択して下さい')){
+        //     Article::where('prefecture_id', $search2)->get();
+        // }
+
+        // if ($request->has('title') && $search3 != ''){
+        //     Article::where('title', 'like', '%'.$search3.'%')->get();
+        // }
+
+        // $articles = Article::all();
+        // return view('articles.index', ['articles' => $articles]);
     }
+
 }
