@@ -142,37 +142,31 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = $request->title;
+        //ジャンル検索
+        // $keyword = $request->name;
+        // if(!empty($keyword)){
+        //     $genre = Genre::where('name', 'like', '%'.$keyword.'%')->first();
+        // }
+        // $now = now();
+        // return view('genres.show', ['genre' => $genre, 'now' => $now]);
+
+        //キーワード検索
+        // $keyword = $request->name;
+        // if(!empty($keyword)){
+        //     $query = Article::query();
+        //     $articles = $query->where('title', 'like', '%'.$keyword.'%')->paginate(10);
+        // }
+        // $now = now();
+        // $genres = Genre::all();
+        // return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
+
+        //エリア検索
+        $keyword = $request->name;
         if(!empty($keyword)){
-            $query = Article::query();
-            $articles = $query->where('title', 'like', '%'.$keyword.'%')->paginate(10);
+        $prefecture = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
         }
         $now = now();
-        $genres = Genre::all();
-        return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
-
-        // $articles = $request->Article::where('title', $article->title)->get();
-        // return view('articles.index', ['article' => $articles]);
-
-
-        // $search1 = $request->input('genre_id', $article->genre->name);
-        // $search2 = $request->input('prefecture_id', $article->prefecture->name);
-        // $search3 = $request->input('title');
-
-        // if ($request->has('genre_id') && $search1 != ('選択して下さい')){
-        //     Article::where('genre_id', $search1)->get();
-        // }
-
-        // if($request->has('prefecture_id') && $search2 != ('選択して下さい')){
-        //     Article::where('prefecture_id', $search2)->get();
-        // }
-
-        // if ($request->has('title') && $search3 != ''){
-        //     Article::where('title', 'like', '%'.$search3.'%')->get();
-        // }
-
-        // $articles = Article::all();
-        // return view('articles.index', ['articles' => $articles]);
+        return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
     }
 
 }

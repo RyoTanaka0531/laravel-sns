@@ -5,7 +5,7 @@
 @section('content')
     @include('nav')
     <div class="container">
-        <div class="card mt-3">
+        <div class="card mt-3 mb-3">
             <div class="card-body">
                 <h2 class="h4 card-title m-0">{{ $genre->name }}の募集</h2>
                 <div class="card-text text-right">
