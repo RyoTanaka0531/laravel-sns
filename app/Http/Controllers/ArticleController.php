@@ -148,69 +148,20 @@ class ArticleController extends Controller
         $genres = Genre::all();
         if(!empty($keyword))
         {
-            $articles = DB::table('articles')
-                ->where('title', 'like','%'.$keyword.'%')
-                ->paginate(4);
-
-            $articles = Article::whereHas('genre', function($query) use ($keyword){
-                $query->where('name', 'like', '%'.$keyword.'%');
-            })->paginate(4);
-
-            $articles = Article::whereHas('prefecture', function($query) use ($keyword){
-                $query->where('name', 'like', '%'.$keyword.'%');
-            })->paginate(4);
-        }else{
+            //orWhereHasメソッドでキーワードがarticle,genre,prefectureのどれかに当てはまるように検索
+            $articles = Article::where('title', 'like', '%'.$keyword.'%')
+                ->orWhereHas('prefecture', function($query) use ($keyword){
+                    $query->where('name', 'like', '%'.$keyword.'%');
+                })
+                ->orWhereHas('genre', function($query) use ($keyword){
+                    $query->where('name', 'like', '%'.$keyword.'%');
+                })->paginate(4);
+            }else{
             $articles = Article::paginate(10);
         }
-        // if (!empty($keyword)){
-            // $articles1 = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
-            // $articles2 = Article::where('name', 'like', '%'.$keyword.'%')->paginate(10);
-            // $articles3 = Genre::where('name', 'like', '%'.$keyword.'%')->first();
-        // }else{
-            // $articles = Article::paginate(10);
-        // }
-
-        //とりあえず空の配列を定義しておく。
-        // $article_id_array = [];
-        // //先ほど取得したデータ達のidを配列に詰めていく。
-        // foreach($articles1 as $q1){
-        //     if($q1){
-        //     $article_id_array[] = $q1->id;
-        //     }
-        // }
-
-        // $prefecture_id_array = [];
-        // foreach($articles2 as $q2){
-        //     if($q2){
-        //     $prefecture_id_array[] = $q2->id;
-        //     }
-        // }
-
-        // $genre_id_array = [];
-        // foreach($articles3 as $q3){
-        //     if($q3){
-        //     $genre_id_array[] = $q3->id;
-        //     }
-        // }
-
-        // $articles = Article::whereIn('id',$article_id_array)->orWhereIn('prefecture_id',$prefecture_id_array)->orWhereIn('genre_id',$genre_id_array)->get();
 
         return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
 
-
-
-        // $keyword = $request->name;
-        // if (Genre::where('name', 'like', '%'.$keyword.'%')){
-        //     $genre = Genre::where('name', 'like', '%'.$keyword.'%')->first();
-        //     return view('genres.show', ['genre' => $genre, 'now' => $now]);
-        // } elseif (Article::where('title', 'like', '%'.$keyword.'%')){
-        //     $articles = Article::where('title', 'like', '%'.$keyword.'%')->paginate(10);
-        //     $genres = Genre::all();
-        //     return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
-        // } elseif (Prefecture::where('name', 'like', '%'.$keyword.'%')){
-        //     $prefecture = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
-        //     return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
-        // }
         //ジャンル検索
         // $keyword = $request->name;
         // if(!empty($keyword)){
