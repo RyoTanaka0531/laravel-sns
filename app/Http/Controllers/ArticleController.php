@@ -172,10 +172,6 @@ class ArticleController extends Controller
         }else{
             $articles = Article::paginate(10);
         }
-
-
-
-
         return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
 
 

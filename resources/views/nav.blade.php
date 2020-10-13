@@ -1,6 +1,20 @@
 <nav class="navbar navbar-expand navbar-dark peach-gradient">
     <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>memo</a>
     <ul class="navbar-nav ml-auto">
+        <li class="nav-items">
+            <form action="{{route('articles.search')}}" method="post">
+                @csrf
+                @method('GET')
+                <div class="input-group mb-2">
+                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
+                        <div class="input-group-append">
+                            <button type="submit" class="input-group-text" value="検索">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                </div>
+            </form>
+        </li>
         @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{route('register')}}">ユーザー登録</a>

@@ -18,15 +18,13 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-2">
                                         <div class="card-text">
-                                            <label for="keyword" class="mt-2">キーワード入力</label>
-                                            <label for="genre_id" class="mt-3">スポーツの種類</label>
+                                            <label for="genre_id" class="mt-4">スポーツの種類</label>
                                             <label for="prefecture_id" class="mt-3">開催エリア</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                             @csrf
                                             @method('GET')
-                                            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
                                             <select name="genre_id" id="genre_id" class="form-control mt-2">
                                                 <option value="" selected>選択して下さい</option>
                                                 @foreach ($genres as $genre)
