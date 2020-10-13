@@ -1,5 +1,5 @@
 <div class="card">
-    @if ($article->deadline === $now)
+    @if ($article->deadline <= $now)
         <div class="card-body">
             <div class="red-text">
                 この募集は締め切りました。

@@ -9,6 +9,7 @@ use App\Http\Requests\ArticleRequest;
 use App\Comment;
 use App\Genre;
 use App\Prefecture;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -145,38 +146,54 @@ class ArticleController extends Controller
         $keyword = $request->keyword;
         $now = now();
         $genres = Genre::all();
+        if(!empty($keyword))
+        {
+            $articles = DB::table('articles')
+                ->where('title', 'like','%'.$keyword.'%')
+                ->paginate(4);
+
+            $articles = Article::whereHas('genre', function($query) use ($keyword){
+                $query->where('name', 'like', '%'.$keyword.'%');
+            })->paginate(4);
+
+            $articles = Article::whereHas('prefecture', function($query) use ($keyword){
+                $query->where('name', 'like', '%'.$keyword.'%');
+            })->paginate(4);
+        }else{
+            $articles = Article::paginate(10);
+        }
         // if (!empty($keyword)){
-            $articles1 = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
-            $articles2 = Article::where('name', 'like', '%'.$keyword.'%')->paginate(10);
-            $articles3 = Genre::where('name', 'like', '%'.$keyword.'%')->first();
+            // $articles1 = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
+            // $articles2 = Article::where('name', 'like', '%'.$keyword.'%')->paginate(10);
+            // $articles3 = Genre::where('name', 'like', '%'.$keyword.'%')->first();
         // }else{
             // $articles = Article::paginate(10);
         // }
 
         //とりあえず空の配列を定義しておく。
-        $article_id_array = [];
-        //先ほど取得したデータ達のidを配列に詰めていく。
-        foreach($articles1 as $q1){
-            if($q1){
-            $article_id_array[] = $q1->id;
-            }
-        }
+        // $article_id_array = [];
+        // //先ほど取得したデータ達のidを配列に詰めていく。
+        // foreach($articles1 as $q1){
+        //     if($q1){
+        //     $article_id_array[] = $q1->id;
+        //     }
+        // }
 
-        $prefecture_id_array = [];
-        foreach($articles2 as $q2){
-            if($q2){
-            $prefecture_id_array[] = $q2->id;
-            }
-        }
+        // $prefecture_id_array = [];
+        // foreach($articles2 as $q2){
+        //     if($q2){
+        //     $prefecture_id_array[] = $q2->id;
+        //     }
+        // }
 
-        $genre_id_array = [];
-        foreach($articles3 as $q3){
-            if($q3){
-            $genre_id_array[] = $q3->id;
-            }
-        }
+        // $genre_id_array = [];
+        // foreach($articles3 as $q3){
+        //     if($q3){
+        //     $genre_id_array[] = $q3->id;
+        //     }
+        // }
 
-        $articles = Article::whereIn('id',$article_id_array)->orWhereIn('prefecture_id',$prefecture_id_array)->orWhereIn('genre_id',$genre_id_array)->get();
+        // $articles = Article::whereIn('id',$article_id_array)->orWhereIn('prefecture_id',$prefecture_id_array)->orWhereIn('genre_id',$genre_id_array)->get();
 
         return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
 
