@@ -142,14 +142,42 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = $request->name;
+        $keyword = $request->keyword;
         $now = now();
         $genres = Genre::all();
-        if (!empty($keyword)){
-            $articles = Article::where('name', 'like', '%'.$keyword.'%')->paginate(10);
-        }else{
-            $articles = Article::all();
+        // if (!empty($keyword)){
+            $articles1 = Prefecture::where('name', 'like', '%'.$keyword.'%')->first();
+            $articles2 = Article::where('name', 'like', '%'.$keyword.'%')->paginate(10);
+            $articles3 = Genre::where('name', 'like', '%'.$keyword.'%')->first();
+        // }else{
+            // $articles = Article::paginate(10);
+        // }
+
+        //とりあえず空の配列を定義しておく。
+        $article_id_array = [];
+        //先ほど取得したデータ達のidを配列に詰めていく。
+        foreach($articles1 as $q1){
+            if($q1){
+            $article_id_array[] = $q1->id;
+            }
         }
+
+        $prefecture_id_array = [];
+        foreach($articles2 as $q2){
+            if($q2){
+            $prefecture_id_array[] = $q2->id;
+            }
+        }
+
+        $genre_id_array = [];
+        foreach($articles3 as $q3){
+            if($q3){
+            $genre_id_array[] = $q3->id;
+            }
+        }
+
+        $articles = Article::whereIn('id',$article_id_array)->orWhereIn('prefecture_id',$prefecture_id_array)->orWhereIn('genre_id',$genre_id_array)->get();
+
         return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
 
 
@@ -174,7 +202,7 @@ class ArticleController extends Controller
         // return view('genres.show', ['genre' => $genre, 'now' => $now]);
 
         //キーワード検索
-        // $keyword = $request->name;
+        // $keyword = $request->keyword;
         // if(!empty($keyword)){
         //     $query = Article::query();
         //     $articles = $query->where('title', 'like', '%'.$keyword.'%')->paginate(10);
