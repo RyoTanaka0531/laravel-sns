@@ -146,21 +146,40 @@ class ArticleController extends Controller
         $keyword = $request->keyword;
         $now = now();
         $genres = Genre::all();
+
         if(!empty($keyword))
         {
             //orWhereHasメソッドでキーワードがarticle,genre,prefectureのどれかに当てはまるように検索
             $articles = Article::where('title', 'like', '%'.$keyword.'%')
                 ->orWhereHas('prefecture', function($query) use ($keyword){
-                    $query->where('name', 'like', '%'.$keyword.'%');
+                    if($keyword === '東京'){
+                        $query->where('name', '東京都');
+                    }elseif($keyword === '京都'){
+                        $query->where('name', '京都府');
+                    }else{
+                        $query->where('name', 'like', '%'.$keyword.'%');
+                    }
                 })
                 ->orWhereHas('genre', function($query) use ($keyword){
                     $query->where('name', 'like', '%'.$keyword.'%');
                 })->paginate(4);
-            }else{
+        }elseif(!empty($genre_id)){
+            $genre = $request->genre_id;
+            $articles = Article::has('genre')->where('genre_id', $genre)->paginate(10);
+        }elseif(!empty($prefecture_id)){
+            $prefecture = $request->prefecture_id;
+            $articles = Article::has('prefecture')->where('prefecture_id', $prefecture)->paginate(10);
+        }else{
             $articles = Article::paginate(10);
         }
 
+
+
+
         return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
+
+
+
 
         //ジャンル検索
         // $keyword = $request->name;

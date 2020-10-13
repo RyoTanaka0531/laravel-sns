@@ -27,7 +27,7 @@
                                             @csrf
                                             @method('GET')
                                             <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
-                                            {{-- <select name="genre_id" id="genre_id" class="form-control mt-2">
+                                            <select name="genre_id" id="genre_id" class="form-control mt-2">
                                                 <option value="" selected>選択して下さい</option>
                                                 @foreach ($genres as $genre)
                                                     <option value="{{$genre->id}}">{{$genre->name}}</option>
@@ -38,7 +38,7 @@
                                                 @foreach ($prefectures as $prefecture)
                                                     <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
                                                 @endforeach
-                                            </select> --}}
+                                            </select>
                                     </div>
                                     <div class="col-lg-4 offset-lg-1 mt-5">
                                             <button type="submit" class="btn peach-gradient">この条件で検索</button>
