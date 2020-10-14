@@ -37,7 +37,7 @@
                                         {{$article->user->name}}
                                     </a>
                                 </div>
-                                <div class="font-weight-lighter">{{$comment->created_at->format('Y/m/d H:i')}}</div>
+                                <div class="font-weight-lighter ml-auto">{{$comment->created_at->format('Y/m/d H:i')}}</div>
                             </div>
                             <div>
                                 <div class="card-body pt-0 pb-2">

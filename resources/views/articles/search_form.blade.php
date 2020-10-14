@@ -28,7 +28,7 @@
                                 @endforeach
                             </select>
                     </div>
-                    <div class="col-lg-4 offset-lg-1 mt-5">
+                    <div class="col-lg-4 offset-lg-1 mt-3">
                             <button type="submit" class="btn peach-gradient">この条件で検索</button>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <div class="card mt-3">
     <div class="card-head mt-3">
-        <h4>
-            <i class="fas fa-running fa-2x pl-3"></i>　スポーツ一覧
+        <h4 class="text-primary">
+            <i class="fas fa-running fa-2x pl-3 text-primary"></i>　スポーツ一覧
         </h4>
     </div>
     <div class="card-body">

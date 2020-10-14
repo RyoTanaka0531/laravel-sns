@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark peach-gradient">
-    <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>memo</a>
+    <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>sports</a>
     <ul class="navbar-nav ml-auto">
         <li class="nav-items">
             <form action="{{route('articles.search')}}" method="post">
@@ -7,7 +7,7 @@
                 @method('GET')
                 <div class="input-group mb-2">
                     <input type="text" name="keyword" class="form-control" placeholder="キーワード">
-                        <div class="input-group-append">
+                        <div class="input-group-append" style="background-color:white;">
                             <button type="submit" class="input-group-text" value="検索">
                                 <i class="fas fa-search"></i>
                             </button>
