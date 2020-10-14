@@ -119,7 +119,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-body">
-                <i class="fas fa-user mr-1"></i>募集人数: {{$article->member}}人
+                <i class="fas fa-user mr-1"></i>募集人数: {{$article->count_joins}}人 / {{$article->member}}人
             </div>
         </div>
         <div class="col-lg-7 col-md-6"></div>
@@ -154,6 +154,8 @@
     {{-- ゲストユーザーも参加ボタンは押せる状態。認証していない場合、押したらログイン画面に遷移 --}}
     <article-join
     :initial-is-joined-by='@json($article->isJoinedBy(Auth::user()))'
+    :authorized='@json(Auth::check())'
+    endpoint="{{route('articles.join', ['article' => $article])}}"
     >
     </article-join>
 </div>

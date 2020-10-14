@@ -179,9 +179,6 @@ class ArticleController extends Controller
         }
         return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres, 'prefectures' => $prefectures]);
 
-
-
-
         //ジャンル検索
         // $keyword = $request->name;
         // if(!empty($keyword)){
@@ -206,6 +203,26 @@ class ArticleController extends Controller
         // }
         // $now = now();
         // return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
+
+    }
+
+    public function join(Request $request, Article $article)
+    {
+        $article->joins()->detach($request->user()->id);
+        $article->joins()->attach($request->user()->id);
+        return [
+            'id' => $article->id,
+            'count_joins' => $article->count_joins
+        ];
+    }
+
+    public function notJoin(Request $request, Article $article)
+    {
+        $article->joins()->detach($request->user()->id);
+        return [
+            'id' => $article->id,
+            'count_joins' => $article->count_joins,
+        ];
     }
 
 }

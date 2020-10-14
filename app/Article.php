@@ -92,4 +92,9 @@ class Article extends Model
         ? (bool)$this->joins->where('id', $user->id)->count()
         :false;
     }
+
+    public function getCountJoinsAttribute():int
+    {
+        return $this->joins->count();
+    }
 }

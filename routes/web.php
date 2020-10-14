@@ -33,6 +33,8 @@ Route::prefix('articles')->name('articles.')->group(function(){
     Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
     Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
     Route::get('/{artilce}/map', 'ArticleController@map')->name('map');
+    Route::put('/{article}/join', 'ArticleController@join')->name('join')->middleware('auth');
+    Route::delete('/{article}/join', 'ArticleController@notJoin')->name('notJoin')->middleware('auth');
 });
 //URLでlocalhost/tag/PHPのようにtagの名前が入る形式にするため{name}となる
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');

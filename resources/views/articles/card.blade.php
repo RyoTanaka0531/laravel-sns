@@ -94,7 +94,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-body">
-                <i class="fas fa-user mr-1 text-primary"></i>募集人数: {{$article->member}}人
+                <i class="fas fa-user mr-1 text-primary"></i>募集人数: {{$article->count_joins}}人 / {{$article->member}}人
             </div>
         </div>
         <div class="col-lg-7 col-md-6"></div>
