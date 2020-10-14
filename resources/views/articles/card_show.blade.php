@@ -151,4 +151,6 @@
             </div>
         @endif
     @endforeach
+    {{-- ゲストユーザーも参加ボタンは押せる状態。認証していない場合、押したらログイン画面に遷移 --}}
+    <article-join></article-join>
 </div>
