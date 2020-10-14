@@ -80,4 +80,16 @@ class Article extends Model
     {
         return $this->belongsTo('App\Prefecture');
     }
+
+    public function joins():BelongsToMany
+    {
+        return $this->belongsToMany('App\User', 'joins')->withTimestamps();
+    }
+
+    public function isJoinedBy(?User $user):bool
+    {
+        return $user
+        ? (bool)$this->joins->where('id', $user->id)->count()
+        :false;
+    }
 }
