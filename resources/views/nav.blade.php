@@ -6,7 +6,7 @@
                 @csrf
                 @method('GET')
                 <div class="input-group mb-2">
-                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
+                    <input type="text" name="keyword" class="form-control" placeholder="キーワード">
                         <div class="input-group-append">
                             <button type="submit" class="input-group-text" value="検索">
                                 <i class="fas fa-search"></i>

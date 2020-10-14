@@ -144,35 +144,40 @@ class ArticleController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->keyword;
+        $genre_id = $request->genre_id;
+        $prefecture_id = $request->prefecture_id;
         $now = now();
         $genres = Genre::all();
+        $prefectures = Prefecture::all();
 
         if(!empty($keyword))
         {
             //orWhereHasメソッドでキーワードがarticle,genre,prefectureのどれかに当てはまるように検索
             $articles = Article::where('title', 'like', '%'.$keyword.'%')
-                ->orWhereHas('prefecture', function($query) use ($keyword){
-                    if($keyword === '東京'){
-                        $query->where('name', '東京都');
-                    }elseif($keyword === '京都'){
-                        $query->where('name', '京都府');
-                    }else{
-                        $query->where('name', 'like', '%'.$keyword.'%');
-                    }
-                })
                 ->orWhereHas('genre', function($query) use ($keyword){
                     $query->where('name', 'like', '%'.$keyword.'%');
+                })
+                ->orWhereHas('prefecture', function($query) use ($keyword){
+                    // if($keyword === '東京'){
+                    //     $query->where('name', '東京都');
+                    // }elseif($keyword === '京都'){
+                    //     $query->where('name', '京都府');
+                    // }else{
+                        $query->where('name', 'like', '%'.$keyword.'%');
+                    // }
                 })->paginate(4);
-        }elseif(!empty($genre_id)){
-            $genre = $request->genre_id;
-            $articles = Article::has('genre')->where('genre_id', $genre)->paginate(10);
-        }elseif(!empty($prefecture_id)){
-            $prefecture = $request->prefecture_id;
-            $articles = Article::has('prefecture')->where('prefecture_id', $prefecture)->paginate(10);
+        }elseif(!empty($genre_id) && empty($prefecture_id)){
+            $articles = Article::where('genre_id', $genre_id)->orderBy('created_at', 'DESC')->paginate(10);
+        }elseif(!empty($prefecture_id) && empty($genre_id)){
+            $articles = Article::where('prefecture_id', $prefecture_id)->orderBy('created_at', 'DESC')->paginate(10);
+        }elseif(!empty($prefecture_id) && !empty($genre_id)){
+            $articles = Article::where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->orderBy('created_at', 'DESC')->paginate(10);
+            // $articles = Article::has(['genre', 'prefecture'])->where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->paginate(10);
+            // $articles = Article::has(['prefecture', 'genre'])->where(['prefecture_id', $prefecture_id, 'genre', $genre_id]) && Article::has('genre')->where('genre_id', $genre_id);
         }else{
             $articles = Article::paginate(10);
         }
-        return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres]);
+        return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres, 'prefectures' => $prefectures]);
 
 
 

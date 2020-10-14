@@ -14,7 +14,9 @@
             </div>
         </div>
         @foreach($prefecture->articles as $article)
-            @include('articles.card')
+            <div class="mt-3">
+                @include('articles.card')
+            </div>
         @endforeach
     </div>
 @endsection
