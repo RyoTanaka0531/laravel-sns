@@ -3,6 +3,10 @@
         <div class="card-body red-text">
             こちらの募集は締め切りました。
         </div>
+    @elseif ($article->member === $article->count_joins)
+        <div class="card-body red-text">
+            こちらの募集は定員数に達成しました。
+        </div>
     @endif
     <div class="card-body d-flex flex-row">
         <a href="{{route('users.show', ['name' => $article->user->name])}}" class="text-dark">
@@ -82,6 +86,9 @@
                 <span>実施場所</span>
             </div>
             {{$article->area}}
+            <div>
+                @include('articles.map')
+            </div>
         </div>
         <div class="card-body">
             <div class="card-text">
@@ -119,7 +126,8 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-body">
-                <i class="fas fa-user mr-1"></i>募集人数: {{$article->count_joins}}人 / {{$article->member}}人
+                <a href=""><i class="fas fa-user mr-1"></i></a>
+                募集人数: {{$article->count_joins}}人 / {{$article->member}}人
             </div>
         </div>
         <div class="col-lg-7 col-md-6"></div>

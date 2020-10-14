@@ -1,6 +1,6 @@
 <input type="hidden" id="keyword" value="{{$article->area}}">
-<button id="search" type="button" class="btn peach-gradient btn-block" data-toggle="modal" data-target="#modal1">
-    <h5>実施場所をマップで確認</h5>
+<button id="search" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+    <span>実施場所をマップで確認</span>
 </button>
 <div class="modal fade" id="modal1" tabindex="-1"
         role="dialog" aria-labelledby="label1" aria-hidden="true">

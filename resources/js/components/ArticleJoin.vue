@@ -6,8 +6,8 @@
         :class="{'btn btn-light btn-block':this.isJoinedBy}"
         @click="clickJoin"
         >
-        <div v-if="this.isJoinedBy === true">参加済み</div>
-        <div v-else>参加する</div>
+        <div v-if="this.isJoinedBy === true"><h5>参加済み</h5></div>
+        <div v-else><h5>参加する</h5></div>
         </button>
     </div>
 </template>
@@ -34,7 +34,8 @@ export default {
     methods:{
         clickJoin(){
             if (!this.authorized){
-                return view('login')
+                alert('こちらに参加するにはログイン、または新規登録が必要です。')
+                return
             }
 
             this.isJoinedBy

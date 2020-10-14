@@ -13,9 +13,6 @@
         <div class="col-lg-9">
             <div class="container mt-3">
                 @include('articles.card_show')
-                <div class="card">
-                    @include('articles.map')
-                </div>
                 <div class="card-body">
                     <h4>
                         コメント一覧
