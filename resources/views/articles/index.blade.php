@@ -11,7 +11,7 @@
                 @include('articles.search_form')
                 @foreach($articles as $article)
                     <div class="mt-3">
-                            @include('articles.card')
+                        @include('articles.card')
                     </div>
                 @endforeach
                 <div class="row justify-content-center mt-3">

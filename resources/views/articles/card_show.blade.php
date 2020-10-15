@@ -135,13 +135,13 @@
         <div class="col-lg-6 col-md-6"></div>
         <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-text">
-                ジャンル:
+                <i class="fas fa-running text-primary"></i>
                 <a href="{{route('genres.show', ['name' => $article->genre->name])}}">
                     {{$article->genre->name}}
                 </a>
             </div>
             <div class="card-text">
-                開催エリア:
+                <i class="fas fa-map-marker-alt text-danger"></i>
                 <a href="{{route('prefectures.show', ['name' => $article->prefecture->name])}}">
                     {{$article->prefecture->name}}
                 </a>
@@ -164,6 +164,8 @@
     {{-- ゲストユーザーも参加ボタンは押せる状態。認証していない場合、押したらログイン画面に遷移 --}}
     <article-join
     :initial-is-joined-by='@json($article->isJoinedBy(Auth::user()))'
+    :initial-count-joins='@json($article->count_joins)'
+    :member='@json($article->member)'
     :authorized='@json(Auth::check())'
     endpoint="{{route('articles.join', ['article' => $article])}}"
     >

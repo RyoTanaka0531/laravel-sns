@@ -47,7 +47,6 @@
 </div>
 <div class="form-group">
     <label for="area">実施場所</label>
-    {{-- <input type="text" name="area" id="area" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館"> --}}
     <div class="row">
         <div class="col-lg-6">
             <input type="text" name="area" id="keyword" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館">
@@ -63,7 +62,6 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    {{-- <h5 class="modal-title" id="label1">{{$article->area}}</h5> --}}
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -136,32 +134,32 @@
     var map;
     var marker;
     var infoWindow;
-    
+
     function initMap() {
-    
+
         //マップ初期表示の位置設定
         var target = document.getElementById('target');
         var centerp = {lat: 35.689614, lng: 139.691585};
-    
+
         //マップ表示
         map = new google.maps.Map(target, {
         center: centerp,
         zoom: 5,
         });
-    
+
         // 検索実行ボタンが押下されたとき
         document.getElementById('search').addEventListener('click', function() {
-    
+
             var place = document.getElementById('keyword').value;
             var geocoder = new google.maps.Geocoder();      // geocoderのコンストラクタ
-    
+
             geocoder.geocode({
                 address: place
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-    
+
                 var bounds = new google.maps.LatLngBounds();
-    
+
                 for (var i in results) {
                     if (results[0].geometry) {
                     // 緯度経度を取得
@@ -189,7 +187,7 @@
             });
         });
     }
-    
+
     // マーカーのセットを実施する
     function setMarker(setplace) {
         marker = new google.maps.Marker({

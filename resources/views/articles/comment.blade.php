@@ -1,5 +1,3 @@
-
-{{-- @foreach ($article->comments as $comment) --}}
     <div class="card mt-3">
         <div class="card-body d-flex flex-row">
             <a href="{{route('users.show', ['name' => $comment->user->name])}}" class="text-dark">
@@ -26,7 +24,6 @@
             </div>
         </div>
     </div>
-{{-- @endforeach --}}
 <div class="row justify-content-center mt-3">
     {{$article->comments->links()}}
 </div>

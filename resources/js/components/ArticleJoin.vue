@@ -7,6 +7,7 @@
         @click="clickJoin"
         >
         <div v-if="this.isJoinedBy === true"><h5>参加済み</h5></div>
+        <!-- <div v-else-if="this.countJoins === this.member && this.isJoindedBy === false"><h5>こちらの募集は定員数に達しました。</h5></div> -->
         <div v-else><h5>参加する</h5></div>
         </button>
     </div>
@@ -17,6 +18,13 @@ export default {
         initialIsJoinedBy:{
             type: Boolean,
             default:false,
+        },
+        initialCountJoins:{
+            type: Number,
+            default:0,
+        },
+        member:{
+            type:Number
         },
         authorized:{
             type:Boolean,
@@ -29,6 +37,8 @@ export default {
     data(){
         return{
             isJoinedBy: this.initialIsJoinedBy,
+            countJoins: this.initialCountJoins,
+            member: this.member,
         }
     },
     methods:{
@@ -37,6 +47,9 @@ export default {
                 alert('こちらに参加するにはログイン、または新規登録が必要です。')
                 return
             }
+            // if(countJoins === member && isJoindedBy === false){
+            //     return
+            // }
 
             this.isJoinedBy
             ? this.notJoin()
