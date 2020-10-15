@@ -132,8 +132,8 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-7 col-md-6"></div>
-        <div class="col-lg-2 col-md-3 col-xs-2">
+        <div class="col-lg-6 col-md-6"></div>
+        <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-text">
                 ジャンル:
                 <a href="{{route('genres.show', ['name' => $article->genre->name])}}">

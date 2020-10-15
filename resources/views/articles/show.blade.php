@@ -13,7 +13,26 @@
         <div class="col-lg-9">
             <div class="container mt-3">
                 @include('articles.card_show')
-                <div class="card-body">
+                @include('articles.tabs', ['hasArticles' => true, 'hasMembers' => false])
+                {{-- <ul class="nav nav-tabs nav-justified mt-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-muted active"
+                        href="{{route('articles.show', ['article' => $article])}}">
+                        コメント
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted"
+                        href="{{route('articles.member', ['article' => $article])}}">
+                        参加者
+                        </a>
+                    </li>
+                </ul> --}}
+                @foreach ($article->comments as $comment)
+                    @include('articles.comment')
+                @endforeach
+                {{-- @include('articles.comment') --}}
+                {{-- <div class="card-body">
                     <h4>
                         コメント一覧
                     </h4>
@@ -65,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                @endauth
+                @endauth --}}
             </div>
         </div>
     </div>

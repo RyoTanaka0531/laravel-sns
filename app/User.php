@@ -43,15 +43,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PasswordResetNotification($token, new BareMail()));
     }
 
+
     public function articles():HasMany
     {
         return $this->hasMany('App\Article');
     }
+
 
     public function followers(): BelongsToMany
     {
@@ -62,15 +65,18 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
     }
 
+
     public function followings(): BelongsToMany
     {
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id')->withTimestamps();
     }
 
+
     public function likes():BelongsToMany
     {
         return $this->belongsToMany('App\Article', 'likes')->withTimestamps();
     }
+
 
     public function isFollowedBy(?User $user): bool
     {
@@ -79,21 +85,25 @@ class User extends Authenticatable
             : false;
     }
 
+
     public function getCountFollowersAttribute():int
     {
         //$this->followersによりユーザーモデルの全フォロワーがコレクションで返る
         return $this->followers->count();
     }
 
+
     public function getCountFollowingsAttribute():int
     {
         return $this->followings->count();
     }
 
+
     public function comments():BelongsToMany
     {
         return $this->belongsToMany('App\Article', 'commnets');
     }
+
 
     // public function genres():BelongsToMany
     // {
@@ -104,10 +114,12 @@ class User extends Authenticatable
         return $this->belongsTo('App\Genre');
     }
 
+
     public function prefecture():BelongsTo
     {
         return $this->belongsTo('App\Prefecture');
     }
+
 
     public function getUserAreaAttribute():string
     {

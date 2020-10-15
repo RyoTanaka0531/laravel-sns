@@ -112,6 +112,7 @@ class ArticleController extends Controller
         return view('articles.show', ['article' => $article, 'genres' => $genres, 'now' => $now]);
     }
 
+
     public function like(Request $request, Article $article)
     {
         //attach:新規登録、detach:削除
@@ -125,6 +126,7 @@ class ArticleController extends Controller
         ];
     }
 
+
     public function unlike(Request $request, Article $article)
     {
         $article->likes()->detach($request->user()->id);
@@ -135,11 +137,13 @@ class ArticleController extends Controller
         ];
     }
 
+
     public function map(Article $article)
     {
         $article = Article::where('id', $article->id);
         return view('articles.map', ['article' => $article]);
     }
+
 
     public function search(Request $request)
     {
@@ -228,7 +232,11 @@ class ArticleController extends Controller
     public function member(Article $article)
     {
         $users = $article->joins()->get();
-        return view('articles.member', ['users' => $users, 'article' => $article]);
+        $genres = Genre::all();
+        $prefectures = Prefecture::all();
+        $now = now();
+        return view('articles.member', ['users' => $users, 'article' => $article, 'now' => $now,
+                                        'genres' => $genres, 'prefectures' => $prefectures]);
     }
 
 }
