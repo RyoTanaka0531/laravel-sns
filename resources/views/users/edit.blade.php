@@ -39,10 +39,10 @@
                                         @isset($user->sex)
                                             <option selected value="{{$user->sex}}">{{$user->sex}}</option>
                                         @else
-                                            <option selected>選択して下さい</option>
+                                            <option selected value="">選択して下さい</option>
                                         @endisset
-                                        <option>男性</option>
-                                        <option>女性</option>
+                                        <option value="男性">男性</option>
+                                        <option value="女性">女性</option>
                                     </select>
                                 </div>
                                 <label for="user_area" class="mt-3">活動地域</label>

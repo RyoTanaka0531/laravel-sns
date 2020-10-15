@@ -1,16 +1,16 @@
 @extends('app')
 
-@section('title', $user->name)
+@section('title', $user->name . 'の参加した募集')
 
 @section('content')
     @include('nav')
     <div class="container">
         @include('users.user')
-        @include('users.tabs', ['hasArticles' => true, 'hasLikes' => false, 'hasJoins' => false])
+        @include('users.tabs', ['hasArticles' => false, 'hasLikes' => false, 'hasJoins' => true])
         @foreach ($articles as $article)
-            <div class='mb-3'>
+            <div class="mt-3">
                 @include('articles.card')
             </div>
-            @endforeach
+        @endforeach
     </div>
 @endsection

@@ -97,6 +97,15 @@ class UserController extends Controller
         }
         $user->save();
         return redirect("/");
+    }
 
+    public function joins(string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $articles = $user->joins()->get();
+        $prefectures = Prefecture::all();
+        $now = now();
+        return view('users.joins', ['user' => $user, 'articles' => $articles,
+                                    'prefectures' => $prefectures, 'now' => $now]);
     }
 }

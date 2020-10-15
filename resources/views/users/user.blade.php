@@ -50,7 +50,11 @@
             性別
         </div>
         <div style="display: inline-block">
-            {{$user->sex}}
+            @if(!empty($user->sex))
+                {{$user->sex}}
+            @else
+                未設定
+            @endif
         </div>
     </div>
     <div class="card-body">

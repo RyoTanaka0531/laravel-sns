@@ -5,6 +5,11 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link text-muted {{$hasJoins ? 'active' : ''}}" href="{{route('users.joins', ['name' => $user->name])}}">
+            参加リスト
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link text-muted {{$hasLikes ? 'active' : ''}}" href="{{route('users.likes', ['name' => $user->name])}}">
             いいね
         </a>

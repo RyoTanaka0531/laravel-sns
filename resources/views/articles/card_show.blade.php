@@ -128,7 +128,7 @@
             <div class="card-body">
                 <a href="{{route('articles.member', ['article' => $article])}}">
                     <i class="fas fa-user mr-1"></i>
-                    募集人数: {{$article->count_joins}}人 / {{$article->member}}人
+                    {{$article->member}}人　現在 {{$article->count_joins}}人
                 </a>
             </div>
         </div>

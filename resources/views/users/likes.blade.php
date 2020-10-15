@@ -6,7 +6,7 @@
     @include('nav')
     <div class="container">
         @include('users.user')
-        @include('users.tabs', ['hasArticles' => false, 'hasLikes' => true])
+        @include('users.tabs', ['hasArticles' => false, 'hasLikes' => true, 'hasJoins' => false])
         @foreach ($articles as $article)
             @include('articles.card')
         @endforeach

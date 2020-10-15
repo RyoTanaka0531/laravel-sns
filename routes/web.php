@@ -42,6 +42,7 @@ Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
 Route::prefix('users')->name('users.')->group(function(){
     Route::get('/{name}', 'UserController@show')->name('show');
     Route::get('/{name}/likes', 'UserController@likes')->name('likes');
+    Route::get('/{name}/joins', 'UserController@joins')->name('joins');
     Route::get('/{name}/followings', 'UserController@followings')->name('followings');
     Route::get('/{name}/followers', 'UserController@followers')->name('followers');
     Route::middleware('auth')->group(function(){
