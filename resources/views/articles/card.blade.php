@@ -69,7 +69,7 @@
             <!-- modal -->
         @endif
     </div>
-    <div class="card-body pt-0 pb-2">
+    <div class="card-body pt-0 pb-3 pt-2">
         <h3 class="h4 card-title">
             <a href="{{route('articles.show', ['article' => $article])}}">
                 {{$article->title}}
@@ -96,7 +96,10 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-body">
-                <i class="fas fa-user mr-1 text-primary"></i>募集人数: {{$article->count_joins}}人 / {{$article->member}}人
+                <a href="{{route('articles.member', ['article' => $article])}}">
+                    <i class="fas fa-user mr-1"></i>
+                    {{$article->count_joins}}人　現在 {{$article->member}}人
+                </a>
             </div>
         </div>
         <div class="col-lg-7 col-md-6"></div>

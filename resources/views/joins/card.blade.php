@@ -32,17 +32,11 @@
         </h2>
     </div>
     <div class="card-body">
-        <div class="card-text">
+        <div class="card-text mr-3" style="display: inline-block">
             自己紹介
         </div>
-        {{$user->prof}}
-    </div>
-    <div class="card-body">
-        <div class="card-text mr-3" style="display: inline-block">
-            年齢
-        </div>
         <div style="display: inline-block">
-            {{$user->age}}歳
+            {{$user->prof}}
         </div>
     </div>
     <div class="card-body">
@@ -53,46 +47,22 @@
             {{$user->sex}}
         </div>
     </div>
-    <div class="card-body">
+    {{-- <div class="card-body">
         <div class="card-text mr-3" style="display: inline-block">
             活動地域
         </div>
         <div style="display: inline-block">
-            @if(!empty($user->user_area))
+            @if($user->user_area)
                 {{$user->user_area}}
-            @elseif(!empty($user->prefecture))
+            @elseif($user->prefecture !== null)
                 {{$user->address}}
-            @elseif(!empty($user->address))
+            @elseif($user->address !== null)
                 {{$user->prefecture->name}}
             @else
                 未設定
             @endif
         </div>
-    </div>
-    <div class="card-body">
-        <div class="card-text mr-3" style="display: inline-block">
-            興味のあるスポーツ
-        </div>
-        <div style="display: inline-block">
-            {{-- 多対多の関係を定義する場合 --}}
-            {{-- @foreach($user->genres as $genre)
-                @if($loop->first)
-                    <div class="card-body pt-0 pb-4 pl-3">
-                    <div class="card-text line-height">
-                @endif
-                    {{ $genre->name }}
-                @if($loop->last)
-                    </div>
-                    </div>
-                @endif
-            @endforeach --}}
-            @if (!empty($user->genre))
-                {{$user->genre->name}}
-            @else
-                未設定
-            @endif
-        </div>
-    </div>
+    </div> --}}
     <div class="card-body">
         <div class="card-text">
             <a href="{{route('users.followings', ['name' => $user->name])}}" class="text-muted">

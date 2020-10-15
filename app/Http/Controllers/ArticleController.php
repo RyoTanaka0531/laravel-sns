@@ -225,4 +225,10 @@ class ArticleController extends Controller
         ];
     }
 
+    public function member(Article $article)
+    {
+        $users = $article->joins()->get();
+        return view('articles.member', ['users' => $users, 'article' => $article]);
+    }
+
 }

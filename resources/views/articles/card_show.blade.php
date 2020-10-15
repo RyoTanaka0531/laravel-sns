@@ -126,8 +126,10 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-body">
-                <a href=""><i class="fas fa-user mr-1"></i></a>
-                募集人数: {{$article->count_joins}}人 / {{$article->member}}人
+                <a href="{{route('articles.member', ['article' => $article])}}">
+                    <i class="fas fa-user mr-1"></i>
+                    募集人数: {{$article->count_joins}}人 / {{$article->member}}人
+                </a>
             </div>
         </div>
         <div class="col-lg-7 col-md-6"></div>
