@@ -47,9 +47,6 @@ export default {
                 alert('こちらに参加するにはログイン、または新規登録が必要です。')
                 return
             }
-            // if(countJoins === member && isJoindedBy === false){
-            //     return
-            // }
 
             this.isJoinedBy
             ? this.notJoin()
