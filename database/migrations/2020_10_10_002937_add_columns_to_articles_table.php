@@ -15,7 +15,7 @@ class AddColumnsToArticlesTable extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
             $table->bigInteger('prefecture_id');
-            $table->foreign('prefecture_id')->references('id')->on('genres');
+            $table->foreign('prefecture_id')->references('id')->on('prefectures');
             $table->date('deadline');
             $table->integer('member');
             $table->string('fee');
