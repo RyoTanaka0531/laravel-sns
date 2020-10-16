@@ -20,6 +20,9 @@
     <div id="app">
         @yield('content')
     </div>
+    <footer class="footer peach-gradient  fixed-bottom">
+        @include('footer')
+    </footer>
 
     {{-- この/js/app.jsはlaravel/public/js/app.jsのこと --}}
     <script src="{{mix('js/app.js')}}"></script>

@@ -13,5 +13,4 @@
             @include('users.person')
         @endforeach
     </div>
-
 @endsection
