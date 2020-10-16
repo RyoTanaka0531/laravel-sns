@@ -17,7 +17,7 @@ class CreateGenreUserTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('genres');
-            $table->bigInteger('genre_id')->nullable(true);
+            $table->bigInteger('genre_id')->nullable();
             $table->foreign('genre_id')->references('id')->on('genres');
             $table->timestamps();
         });

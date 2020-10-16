@@ -28,7 +28,7 @@ class ArticleRequest extends FormRequest
         return [
             //
             'title' => 'required|max:50',
-            'body' => 'required|max:500',
+            'body' => 'required|max:200',
             //スペースと/を含ませないようにする
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
             'area' => 'required',
