@@ -18,5 +18,8 @@
                 @include('articles.card')
             </div>
         @endforeach
+        <div class="row justify-content-center mt-3">
+            {{ $articles->links() }}
+        </div>
     </div>
 @endsection

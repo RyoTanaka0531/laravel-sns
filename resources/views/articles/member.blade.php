@@ -18,6 +18,9 @@
                     @foreach ($users as $user)
                         @include('joins.card')
                     @endforeach
+                    <div class="row justify-content-center mt-3">
+                        {{ $users->links() }}
+                    </div>
                 </div>
             </div>
         </div>

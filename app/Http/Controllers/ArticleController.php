@@ -23,6 +23,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::orderBy('created_at', 'DESC')->paginate(5);
+        $articles->load(['user', 'likes', 'tags', 'genre', 'prefecture', 'joins', 'comments']);
         $genres = Genre::all();
         $prefectures = Prefecture::all();
         $now = now();
@@ -229,7 +230,7 @@ class ArticleController extends Controller
 
     public function member(Article $article)
     {
-        $users = $article->joins()->get()->sortByDesc('created_at');
+        $users = $article->joins()->orderBy('created_at', 'DESC')->paginate(10);
         $genres = Genre::all();
         $prefectures = Prefecture::all();
         $now = now();

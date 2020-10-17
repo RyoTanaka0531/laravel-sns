@@ -50,7 +50,7 @@ class GenreController extends Controller
     public function show(string $name)
     {
         $genre = Genre::where('name', $name)->first();
-        $articles = $genre->articles()->get()->sortByDesc('deadline');
+        $articles = $genre->articles()->orderBy('deadline', 'DESC')->paginate(10);
         $now = now();
         return view('genres.show', ['genre' => $genre, 'now' => $now, 'articles' => $articles]);
     }
