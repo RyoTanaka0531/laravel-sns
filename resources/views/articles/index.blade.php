@@ -4,7 +4,7 @@
 @include('nav')
 @section('content')
     @include('flash')
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-lg-3">
                 @include('sidebar')
             </div>

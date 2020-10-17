@@ -162,20 +162,20 @@ class ArticleController extends Controller
                     $query->where('name', 'like', '%'.$keyword.'%');
                 })
                 ->orWhereHas('prefecture', function($query) use ($keyword){
-                    // if($keyword === '東京'){
-                    //     $query->where('name', '東京都');
-                    // }elseif($keyword === '京都'){
-                    //     $query->where('name', '京都府');
-                    // }else{
+                    if($keyword === '東京'){
+                        $query->where('name', '東京都');
+                    }elseif($keyword === '京都'){
+                        $query->where('name', '京都府');
+                    }else{
                         $query->where('name', 'like', '%'.$keyword.'%');
-                    // }
+                    }
                 })->paginate(4);
         }elseif(!empty($genre_id) && empty($prefecture_id)){
-            $articles = Article::where('genre_id', $genre_id)->orderBy('created_at', 'DESC')->paginate(10);
+            $articles = Article::where('genre_id', $genre_id)->orderBy('deadline', 'DESC')->paginate(10);
         }elseif(!empty($prefecture_id) && empty($genre_id)){
-            $articles = Article::where('prefecture_id', $prefecture_id)->orderBy('created_at', 'DESC')->paginate(10);
+            $articles = Article::where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
         }elseif(!empty($prefecture_id) && !empty($genre_id)){
-            $articles = Article::where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->orderBy('created_at', 'DESC')->paginate(10);
+            $articles = Article::where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
             // $articles = Article::has(['genre', 'prefecture'])->where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->paginate(10);
             // $articles = Article::has(['prefecture', 'genre'])->where(['prefecture_id', $prefecture_id, 'genre', $genre_id]) && Article::has('genre')->where('genre_id', $genre_id);
         }else{
@@ -231,7 +231,7 @@ class ArticleController extends Controller
 
     public function member(Article $article)
     {
-        $users = $article->joins()->get();
+        $users = $article->joins()->get()->sortByDesc('created_at');
         $genres = Genre::all();
         $prefectures = Prefecture::all();
         $now = now();

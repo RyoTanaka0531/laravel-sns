@@ -10,7 +10,8 @@ class PrefectureController extends Controller
     public function show(string $name)
     {
         $prefecture = Prefecture::where('name', $name)->first();
+        $articles = $prefecture->articles()->get()->sortByDesc('deadline');
         $now = now();
-        return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now]);
+        return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now, 'articles' => $articles]);
     }
 }

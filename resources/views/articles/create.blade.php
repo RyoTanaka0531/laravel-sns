@@ -4,11 +4,12 @@
 @include('nav')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
             <div class="col-12">
                 <div class="card mt-3">
                     @include('error_card_list')
+                    @include('flash')
                     <div class="card-body pt-0">
                         <div class="card-text">
                             <form action="{{route('articles.store')}}" method="post">

@@ -17,7 +17,7 @@
 </head>
 <body>
     {{-- id=app resources/js/app.jsに定義したVueコンポーネントを各Bladeで使えるようにする --}}
-    <div id="app">
+    <div id="app" class="mb-5">
         @yield('content')
     </div>
     <footer class="footer peach-gradient  fixed-bottom">

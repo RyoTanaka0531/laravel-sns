@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        @foreach($genre->articles as $article)
+        @foreach($articles as $article)
             <div class="mt-3">
                 @include('articles.card')
             </div>

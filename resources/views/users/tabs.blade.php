@@ -6,7 +6,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link text-muted {{$hasJoins ? 'active' : ''}}" href="{{route('users.joins', ['name' => $user->name])}}">
-            参加リスト
+            参加
         </a>
     </li>
     <li class="nav-item">

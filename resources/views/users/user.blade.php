@@ -62,7 +62,10 @@
             活動地域
         </div>
         <div style="display: inline-block">
-            @if(!empty($user->user_area))
+            @isset($user->prefecture)
+                {{$user->prefecture->name}}{{$user->address}}
+            @endisset
+            {{-- @if(!empty($user->user_area))
                 {{$user->user_area}}
             @elseif(!empty($user->prefecture))
                 {{$user->address}}
@@ -70,7 +73,7 @@
                 {{$user->prefecture->name}}
             @else
                 未設定
-            @endif
+            @endif --}}
         </div>
     </div>
     <div class="card-body">
