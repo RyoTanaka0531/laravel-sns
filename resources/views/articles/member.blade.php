@@ -1,11 +1,9 @@
 @extends('app')
 
-@section('title', '記事詳細')
+@section('title', '参加者')
 
 @section('content')
     @include('nav')
-    @include('flash')
-    @include('error_card_list')
     <div class="row">
         <div class="col-lg-3">
             @include('sidebar')

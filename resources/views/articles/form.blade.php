@@ -87,11 +87,14 @@
                 @else
                     <option selected value="">選択して下さい</option>
                 @endisset
-                <option>1</option>
+                @for ($i = 0; $i < 51; $i++)
+                    <option>{{$i}}</option>
+                @endfor
+                {{-- <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5</option>
+                <option>5</option> --}}
             </select>
         </div>
     </div>
