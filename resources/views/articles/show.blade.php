@@ -17,6 +17,7 @@
                 @foreach ($article->comments as $comment)
                     @include('articles.comment')
                 @endforeach
+                @include('articles.comment_form')
             </div>
         </div>
     </div>

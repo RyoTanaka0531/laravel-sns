@@ -169,15 +169,13 @@ class ArticleController extends Controller
                     }else{
                         $query->where('name', 'like', '%'.$keyword.'%');
                     }
-                })->paginate(4);
+                })->orderBy('deadline', 'DESC')->paginate(4);
         }elseif(!empty($genre_id) && empty($prefecture_id)){
             $articles = Article::where('genre_id', $genre_id)->orderBy('deadline', 'DESC')->paginate(10);
         }elseif(!empty($prefecture_id) && empty($genre_id)){
             $articles = Article::where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
         }elseif(!empty($prefecture_id) && !empty($genre_id)){
             $articles = Article::where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
-            // $articles = Article::has(['genre', 'prefecture'])->where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->paginate(10);
-            // $articles = Article::has(['prefecture', 'genre'])->where(['prefecture_id', $prefecture_id, 'genre', $genre_id]) && Article::has('genre')->where('genre_id', $genre_id);
         }else{
             $articles = Article::paginate(10);
         }

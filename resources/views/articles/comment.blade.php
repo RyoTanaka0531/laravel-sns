@@ -27,7 +27,7 @@
 <div class="row justify-content-center mt-3">
     {{$article->comments->links()}}
 </div>
-@auth
+{{-- @auth
     <div class="card mt-3">
         <div class="card-body pt-0">
             <div class="card-text">
@@ -43,4 +43,4 @@
             </div>
         </div>
     </div>
-@endauth
+@endauth --}}

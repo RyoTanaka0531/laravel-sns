@@ -1,9 +1,9 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use App\User;
 
 
 /*
@@ -28,6 +28,6 @@ $factory->define(User::class, function (Faker $faker) {
         'age' => $faker->randomNumber(2),
         'sex' => $faker->randomElement($array=['男性','女性']),
         'address' => $faker->city,
-        'prefecture_id' => $faker->numberBetween(1,45)
+        'prefecture_id' => $faker->numberBetween(1,40)
     ];
 });

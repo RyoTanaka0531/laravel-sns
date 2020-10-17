@@ -10,7 +10,7 @@ $factory->define(Article::class, function (Faker $faker) {
     return [
         'title' => $faker->realText(10),
         'body' => $faker->realText(30),
-        'user_id' =>$faker->numberBetween(1,10),
+        'user_id' =>$faker->numberBetween(1,5),
         'date' =>$faker->dateTimeThisMonth->format('Y-m-d'),
         'area' => $faker->city,
         'genre_id' => $faker->numberBetween(1,15),
