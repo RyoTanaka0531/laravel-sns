@@ -62,9 +62,13 @@
             活動地域
         </div>
         <div style="display: inline-block">
-            @isset($user->prefecture)
+            @if(!empty($user->prefecture))
                 {{$user->prefecture->name}}{{$user->address}}
-            @endisset
+            @elseif(!empty($user->address))
+                {{$user->address}}
+            @else
+                未設定
+            @endif
             {{-- @if(!empty($user->user_area))
                 {{$user->user_area}}
             @elseif(!empty($user->prefecture))

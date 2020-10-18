@@ -37,17 +37,11 @@
     <select name="prefecture_id" id="prefecture_id" class="form-control">
         @if(!empty($article->prefecture->name))
             <option selected value="{{$article->prefecture->id}}">{{$article->prefecture->name}}</option>
-        @elseif(!empty(old('prefecture_id')))
-            <option selected value="{{old('prefecture_id')}}">{{$prefecture->name}}</option>
         @else
             <option selected value="">選択して下さい</option>
         @endisset
         @foreach ($prefectures as $prefecture)
-            {{-- @if(!empty(old('prefecture_id')))
-                <option selected value="{{old('prefecture_id')}}">{{$prefecture->name}}</option>
-            @else --}}
-                <option value="{{old('prefecture_id') ?? $prefecture->id}}">{{$prefecture->name}}</option>
-            {{-- @endif --}}
+            <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
         @endforeach
     </select>
 </div>

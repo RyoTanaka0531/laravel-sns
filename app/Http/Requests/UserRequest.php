@@ -41,6 +41,8 @@ class UserRequest extends FormRequest
             'sex' => '性別',
             'age' => '年齢',
             'prof' => '自己紹介',
+            'prefecture_id' => '都道府県',
+            'genre_id' => '興味のあるスポーツ',
         ];
     }
 }

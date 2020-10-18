@@ -31,7 +31,19 @@
                                 </div>
                                 <div class="mt-3">
                                     <label for="age">年齢</label>
-                                    <input type="text" name="age" id="age" value="{{$user->age ?? old('age')}}" class="form-control">
+                                    <select name="age" id="age" class="form-control">
+                                        @if(!empty($user->age))
+                                            <option selected value="{{$user->age}}">{{$user->age}}</option>
+                                        @elseif(!empty(old('age')))
+                                            <option selected value="{{old('age')}}">{{old('age')}}</option>
+                                        @else
+                                            <option selected value="">選択して下さい</option>
+                                        @endif
+                                        @for ($i = 1; $i < 100; $i++)
+                                            <option>{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                    {{-- <input type="text" name="age" id="age" value="{{$user->age ?? old('age')}}" class="form-control"> --}}
                                 </div>
                                 <div class="mt-3">
                                     <label for="sex">性別</label>

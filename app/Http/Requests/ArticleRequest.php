@@ -55,6 +55,8 @@ class ArticleRequest extends FormRequest
             'member' => '募集人数',
             'deadline' => '締め切りの日程',
             'fee' => '参加費',
+            'genre_id' => 'ジャンル',
+            'prefecture_id' => '開催エリア',
         ];
     }
 
