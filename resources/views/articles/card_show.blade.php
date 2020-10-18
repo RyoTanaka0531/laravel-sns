@@ -127,7 +127,7 @@
         <div class="col-lg-3 col-md-3 col-xs-2">
             <div class="card-body">
                 <a href="{{route('articles.member', ['article' => $article])}}">
-                    <i class="fas fa-user mr-1"></i>
+                    <i class="fas fa-user mr-1 icon-primary"></i>
                     {{$article->member}}人　現在 {{$article->count_joins}}人
                 </a>
             </div>
