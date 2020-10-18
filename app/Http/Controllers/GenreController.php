@@ -51,6 +51,7 @@ class GenreController extends Controller
     {
         $genre = Genre::where('name', $name)->first();
         $articles = $genre->articles()->orderBy('deadline', 'DESC')->paginate(10);
+        $articles->load(['genre', 'prefecture', 'user', 'comments', 'likes', 'tags', 'joins']);
         $now = now();
         return view('genres.show', ['genre' => $genre, 'now' => $now, 'articles' => $articles]);
     }

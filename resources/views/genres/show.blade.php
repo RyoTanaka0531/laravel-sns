@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h2 class="h4 card-title m-0">{{ $genre->name }}の募集</h2>
                 <div class="card-text text-right">
-                    {{ $genre->articles->count() }}件
+                    {{ $articles->count() }}件
                 </div>
             </div>
         </div>

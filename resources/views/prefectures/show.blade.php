@@ -9,11 +9,11 @@
             <div class="card-body">
                 <h2 class="h4 card-title m-0">{{ $prefecture->name }}での募集</h2>
                 <div class="card-text text-right">
-                    {{ $prefecture->articles->count() }}件
+                    {{ $articles->count() }}件
                 </div>
             </div>
         </div>
-        @foreach($prefecture->articles as $article)
+        @foreach($articles as $article)
             <div class="mt-3">
                 @include('articles.card')
             </div>

@@ -154,7 +154,7 @@ class ArticleController extends Controller
         $genre_id = $request->genre_id;
         $prefecture_id = $request->prefecture_id;
         $now = now();
-        $genres = Genre::all();
+        $genres = Genre::all()->load('articles');
         $prefectures = Prefecture::all();
 
         if(!empty($keyword))
@@ -173,15 +173,16 @@ class ArticleController extends Controller
                         $query->where('name', 'like', '%'.$keyword.'%');
                     }
                 })->orderBy('deadline', 'DESC')->paginate(4);
-        }elseif(!empty($genre_id) && empty($prefecture_id)){
-            $articles = Article::where('genre_id', $genre_id)->orderBy('deadline', 'DESC')->paginate(10);
-        }elseif(!empty($prefecture_id) && empty($genre_id)){
-            $articles = Article::where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
-        }elseif(!empty($prefecture_id) && !empty($genre_id)){
-            $articles = Article::where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
-        }else{
-            $articles = Article::paginate(10);
-        }
+            }elseif(!empty($genre_id) && empty($prefecture_id)){
+                $articles = Article::where('genre_id', $genre_id)->orderBy('deadline', 'DESC')->paginate(10);
+            }elseif(!empty($prefecture_id) && empty($genre_id)){
+                $articles = Article::where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
+            }elseif(!empty($prefecture_id) && !empty($genre_id)){
+                $articles = Article::where('genre_id', $genre_id)->where('prefecture_id', $prefecture_id)->orderBy('deadline', 'DESC')->paginate(10);
+            }else{
+                $articles = Article::paginate(10);
+            }
+            $articles->load(['genre', 'prefecture', 'likes', 'user', 'comments', 'tags', 'joins']);
         return view('articles.search', ['articles' => $articles, 'now' => $now, 'genres' => $genres, 'prefectures' => $prefectures]);
 
         //ジャンル検索

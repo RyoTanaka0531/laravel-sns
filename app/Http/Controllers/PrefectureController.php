@@ -11,6 +11,7 @@ class PrefectureController extends Controller
     {
         $prefecture = Prefecture::where('name', $name)->first();
         $articles = $prefecture->articles()->orderBy('deadline', 'DESC')->paginate(10);
+        $articles->load(['genre', 'prefecture', 'user', 'comments', 'likes', 'tags', 'joins']);
         $now = now();
         return view('prefectures.show', ['prefecture' => $prefecture, 'now' => $now, 'articles' => $articles]);
     }
