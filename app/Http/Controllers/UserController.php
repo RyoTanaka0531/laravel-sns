@@ -15,9 +15,10 @@ class UserController extends Controller
     public function show(string $name)
     {
         $now = now();
-        $user = User::where('name', $name)->first()
-            ->load(['articles.user', 'articles.likes', 'articles.tags']);
+        $user = User::where('name', $name)->first();
+            // ->load(['articles.user', 'articles.likes', 'articles.tags', 'articles']);
         $articles = $user->articles()->orderBy('created_at', 'DESC')->paginate(10);
+        $articles->load('genre', 'prefecture', 'likes', 'comments', 'tags', 'joins', 'user');
         return view('users.show', ['user' => $user, 'articles' => $articles, 'now' => $now]);
     }
 
@@ -55,10 +56,11 @@ class UserController extends Controller
 
     public function likes(string $name)
     {
-        $user = User::where('name', $name)->first()
-            ->load(['likes.user', 'likes.likes', 'likes.tags']);
+        $user = User::where('name', $name)->first();
+            // ->load(['likes.user', 'likes.likes', 'likes.tags']);
         // $articles = $user->likes->sortByDesc('created_at')->paginate(10);
         $articles = $user->likes()->orderBy('created_at', 'DESC')->paginate(10);
+        $articles->load(['user', 'comments', 'likes', 'tags', 'joins', 'genre', 'prefecture']);
         $now = now();
         return view('users.likes', ['user' => $user, 'articles' => $articles, 'now' => $now]);
     }
@@ -104,6 +106,7 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
         $articles = $user->joins()->orderBy('deadline', 'DESC')->paginate(10);
+        $articles->load(['user', 'comments', 'likes', 'tags', 'joins', 'genre', 'prefecture']);
         $prefectures = Prefecture::all();
         $now = now();
         return view('users.joins', ['user' => $user, 'articles' => $articles,

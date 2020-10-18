@@ -110,7 +110,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         $article->comments = Comment::where('article_id', $article->id)->orderBy('created_at', 'DESC')->paginate(10);
-        $genres = Genre::all();
+        $article->load('comments');
+        $genres = Genre::all()->load('articles');
         $now = now();
         return view('articles.show', ['article' => $article, 'genres' => $genres, 'now' => $now]);
     }
@@ -234,7 +235,7 @@ class ArticleController extends Controller
     public function member(Article $article)
     {
         $users = $article->joins()->orderBy('created_at', 'DESC')->paginate(10);
-        $genres = Genre::all();
+        $genres = Genre::all()->load('articles');
         $prefectures = Prefecture::all();
         $now = now();
         return view('articles.member', ['users' => $users, 'article' => $article, 'now' => $now,
