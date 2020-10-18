@@ -22,9 +22,9 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'DESC')->paginate(5);
+        $articles = Article::orderBy('deadline', 'DESC')->paginate(10);
         $articles->load(['user', 'likes', 'tags', 'genre', 'prefecture', 'joins', 'comments']);
-        $genres = Genre::all();
+        $genres = Genre::all()->load('articles');
         $prefectures = Prefecture::all();
         $now = now();
         // $articles = Article::paginate(10)->sortByDesc('created_at');]
@@ -34,17 +34,19 @@ class ArticleController extends Controller
                                         'now' => $now, 'prefectures' => $prefectures]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $allTagNames = Tag::all()->map(function($tag){
             return ['text' => $tag->name];
         });
         $genres = Genre::all();
         $prefectures = Prefecture::all();
+        $prefecture = Prefecture::where('id', $request->prefecture_id)->first();
         return view('articles.create', [
             'allTagNames' => $allTagNames,
             'genres' => $genres,
             'prefectures' => $prefectures,
+            'prefecture' => $prefecture,
         ]);
     }
 

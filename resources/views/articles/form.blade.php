@@ -35,13 +35,19 @@
 <div class="form-group">
     <label for="prefecture">開催エリア</label>
     <select name="prefecture_id" id="prefecture_id" class="form-control">
-        @isset($article->prefecture->name)
+        @if(!empty($article->prefecture->name))
             <option selected value="{{$article->prefecture->id}}">{{$article->prefecture->name}}</option>
+        @elseif(!empty(old('prefecture_id')))
+            <option selected value="{{old('prefecture_id')}}">{{$prefecture->name}}</option>
         @else
             <option selected value="">選択して下さい</option>
         @endisset
         @foreach ($prefectures as $prefecture)
-            <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
+            {{-- @if(!empty(old('prefecture_id')))
+                <option selected value="{{old('prefecture_id')}}">{{$prefecture->name}}</option>
+            @else --}}
+                <option value="{{old('prefecture_id') ?? $prefecture->id}}">{{$prefecture->name}}</option>
+            {{-- @endif --}}
         @endforeach
     </select>
 </div>
@@ -82,19 +88,21 @@
         <div class="form-group">
             <label for="member">募集人数</label>
             <select name="member" id="member" class="form-control">
-                @isset($article->prefecture->name)
+                {{-- @isset($article->prefecture->name)
                     <option selected value="{{$article->member}}">{{$article->member}}</option>
                 @else
                     <option selected value="">選択して下さい</option>
-                @endisset
+                @endisset --}}
+                @if(!empty($article->member))
+                    <option selected value="{{$article->member}}">{{$article->member}}</option>
+                @elseif(!empty(old('member')))
+                    <option selected value="{{old('member')}}">{{old('member')}}</option>
+                @else
+                    <option selected value="">選択して下さい</option>
+                @endif
                 @for ($i = 0; $i < 51; $i++)
                     <option>{{$i}}</option>
                 @endfor
-                {{-- <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option> --}}
             </select>
         </div>
     </div>
@@ -102,8 +110,10 @@
         <div class="form-group">
             <label for="fee">参加費</label>
             <select name="fee" id="fee" class="form-control">
-                @isset($article->fee)
+                @if(!empty($article->fee))
                     <option selected value="{{$article->fee}}">{{$article->fee}}</option>
+                @elseif(!empty(old('fee')))
+                    <option selected value="{{old('fee')}}">{{old('fee')}}</option>
                 @else
                     <option selected value="">選択して下さい</option>
                 @endisset

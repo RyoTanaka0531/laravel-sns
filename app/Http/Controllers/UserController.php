@@ -103,7 +103,7 @@ class UserController extends Controller
     public function joins(string $name)
     {
         $user = User::where('name', $name)->first();
-        $articles = $user->joins()->orderBy('created_at', 'DESC')->paginate(10);
+        $articles = $user->joins()->orderBy('deadline', 'DESC')->paginate(10);
         $prefectures = Prefecture::all();
         $now = now();
         return view('users.joins', ['user' => $user, 'articles' => $articles,
