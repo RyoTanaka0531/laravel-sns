@@ -19,4 +19,11 @@ class ArticleTest extends TestCase
             ->assertViewIs('artilces.index');
     }
 
+    public function testGuestCreate()
+    {
+        $response = $this->get(route('articles.create'));
+
+        $response->assertRedirect(route('login'));
+    }
+
 }
