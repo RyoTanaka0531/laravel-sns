@@ -21,7 +21,9 @@
         @yield('content')
     </div>
     <footer class="footer peach-gradient  fixed-bottom">
-        @include('footer')
+        <div class="container text-center">
+            <span>©︎ sport.2020.</span>
+        </div>
     </footer>
 
     {{-- この/js/app.jsはlaravel/public/js/app.jsのこと --}}

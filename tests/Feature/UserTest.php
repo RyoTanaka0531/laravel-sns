@@ -2,13 +2,12 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 use App\User;
-use App\Article;
 
-class ArticleTest extends TestCase
+class UserTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -21,11 +20,14 @@ class ArticleTest extends TestCase
 
         $response->assertStatus(200);
 
+        //ログイン状態でない場合にarticles/createに遷移できない
+        $response = $this->get('articles/create');
+        $response->assertStatus(302);
+
+        //ログイン状態でarticles/createに遷移できる
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get('articles/create');
-        // $article = factory(Article::class)->create();
-        // $response = $this->actingAs($user)->get('articles/{article}/edit');
-
         $response->assertStatus(200);
+
     }
 }

@@ -1,6 +1,6 @@
 @extends('app')
 @section('title', '募集一覧')
-@section('footer')
+{{-- @section('footer') --}}
 @include('nav')
 @section('content')
     @include('flash')
