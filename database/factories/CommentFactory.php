@@ -9,8 +9,12 @@ use Faker\Generator as Faker;
 $factory->define(Comment::class, function (Faker $faker) {
     return [
         'message' => $faker->realText(20),
-        'user_id' => $faker->numberBetween(1,5),
-        'article_id' => $faker->numberBetween(1,10),
+        'user_id' => function(){
+            return factory(User::class);
+        },
+        'article_id' => function(){
+            return factory(Article::class);
+        },
         //
     ];
 });
