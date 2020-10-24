@@ -4,6 +4,7 @@
 @include('nav')
 @section('content')
     @include('flash')
+    @include('eyecatch')
         <div class="row mb-5">
             <div class="col-lg-3">
                 @include('sidebar')
