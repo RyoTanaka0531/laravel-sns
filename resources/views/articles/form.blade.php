@@ -52,7 +52,7 @@
             <input type="text" name="area" id="keyword" class="form-control" required value="{{$article->area ?? old('area')}}" placeholder="例)〇〇体育館">
         </div>
         <div class="col-lg-6">
-            <button id="search" type="button" class="btn peach-gradient btn-block" data-toggle="modal" data-target="#modal1">
+            <button id="search" type="button" class="btn btn-block" data-toggle="modal" data-target="#modal1">
                 マップで確認
             </button>
         </div>

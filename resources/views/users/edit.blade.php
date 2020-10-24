@@ -99,7 +99,7 @@
                                     <label for="prof">プロフィール</label>
                                     <textarea name="prof" id="prof" rows="4" class="form-control">{{$user->prof}}</textarea>
                                 </div>
-                                <button type="submit" class="btn peach-gradient btn-block">更新する</button>
+                                <button type="submit" class="btn btn-block">更新する</button>
                             </form>
                         </div>
                     </div>

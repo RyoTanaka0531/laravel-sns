@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     {{-- Material Design Bootstrap --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
 </head>
 <body>
@@ -20,7 +20,7 @@
     <div id="app" class="mb-5">
         @yield('content')
     </div>
-    <footer class="footer peach-gradient  fixed-bottom">
+    <footer class="footer fixed-bottom">
         <div class="container text-center">
             <span>©︎ sport.2020.</span>
         </div>

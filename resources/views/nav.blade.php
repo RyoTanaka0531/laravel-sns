@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand navbar-dark peach-gradient">
-    <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>sports</a>
+<nav class="navbar navbar-expand">
+    <a class="navbar-brand" href="/"><i class="fas fa-running mr-2"></i>スポコミュ</a>
     <ul class="navbar-nav ml-auto">
         <li class="nav-items">
             <form action="{{route('articles.search')}}" method="post">
