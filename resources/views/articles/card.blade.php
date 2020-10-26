@@ -94,7 +94,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-xs-2">
+        <div class="col-lg-3 col-md-3">
             <div class="card-body">
                 <a href="{{route('articles.member', ['article' => $article])}}">
                     <i class="fas fa-user mr-1 icon-primary"></i>
@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="col-lg-7 col-md-6"></div>
-        <div class="col-lg-2 col-md-3 col-xs-5">
+        <div class="col-lg-2 col-md-3">
             <div class="card-text">
                 <i class="fas fa-running text-primary"></i>
                 <a href="{{route('genres.show', ['name' => $article->genre->name])}}">

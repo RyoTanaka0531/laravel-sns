@@ -37,8 +37,8 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            // 'url' => env('DATABASE_URL'),
-            // 'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'url' => env('DATABASE_URL'),
+            'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'database' => ':memory:',
             'prefix' => '',
             'option' => [
