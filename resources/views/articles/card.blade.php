@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="col-lg-7 col-md-6"></div>
-        <div class="col-lg-2 col-md-3 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-5">
             <div class="card-text">
                 <i class="fas fa-running text-primary"></i>
                 <a href="{{route('genres.show', ['name' => $article->genre->name])}}">

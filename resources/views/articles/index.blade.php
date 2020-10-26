@@ -5,6 +5,7 @@
 @section('content')
     @include('flash')
     @include('eyecatch')
+    <div class="container">
         <div class="row mb-5">
             <div class="col-lg-3">
                 @include('sidebar')
@@ -21,4 +22,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
