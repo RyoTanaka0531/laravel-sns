@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Article;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -9,21 +10,14 @@ use Illuminate\Foundation\Testing\WithFaker;
 
 class ArticleTest extends TestCase
 {
-    // use RefreshDatabase;
+    use RefreshDatabase;
 
-    public function testIndex()
+    public function testIsLikedByNull()
     {
-        $response = $this->get(route('articles.index'));
+        $article = factory(Article::class)->create();
 
-        $response->assertStatus(200)
-            ->assertViewIs('artilces.index');
+        $result = $article->isLikedBy(null);
+
+        $this->assertFalse($result);
     }
-
-    public function testGuestCreate()
-    {
-        $response = $this->get(route('articles.create'));
-
-        $response->assertRedirect(route('login'));
-    }
-
 }

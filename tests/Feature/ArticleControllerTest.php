@@ -29,16 +29,10 @@ class ArticleControllerTest extends TestCase
 
     public function testAuthCreate()
     {
-        // $user = factory(User::class)->create();
-        $user = new User();
-        $user->create([
-            'name' => 'testname',
-            'email' => 'example@test.com',
-            'password' => 'testpassword',
-        ]);
+        $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)
-            ->get(route('articles.crete'));
+            ->get(route('articles.create'));
 
         $response->assertStatus(200)
             ->assertViewIs('articles.create');

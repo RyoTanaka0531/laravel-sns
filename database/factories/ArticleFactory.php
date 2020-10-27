@@ -4,6 +4,9 @@
 
 // use App\Model;
 use App\Article;
+use App\User;
+use App\Genre;
+use App\Prefecture;
 use Faker\Generator as Faker;
 
 $factory->define(Article::class, function (Faker $faker) {

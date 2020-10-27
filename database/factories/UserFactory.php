@@ -28,7 +28,7 @@ $factory->define(User::class, function (Faker $faker) {
         'age' => $faker->randomNumber(2),
         'sex' => $faker->randomElement($array=['男性','女性']),
         'address' => $faker->city,
-        'prefecture_id' => $faker->numberBetween(1,40)
+        // 'prefecture_id' => $faker->numberBetween(1,40)
         // 'prefecture_id' => function(){
         //     return factory(Prefecture::class);
         // }
