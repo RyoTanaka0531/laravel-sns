@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class ArticleControllerTest extends TestCase
 {
-    // use RefreshDatabase;
+    use RefreshDatabase;
 
     public function testIndex()
     {
@@ -29,12 +29,18 @@ class ArticleControllerTest extends TestCase
 
     public function testAuthCreate()
     {
-        $user = factory(User::class)->create();
+        // $user = factory(User::class)->create();
+        $user = new User();
+        $user->create([
+            'name' => 'testname',
+            'email' => 'example@test.com',
+            'password' => 'testpassword',
+        ]);
 
-        // $response = $this->actingAs($user)
-        //     ->get(route('articles.crete'));
+        $response = $this->actingAs($user)
+            ->get(route('articles.crete'));
 
-        // $response->assertStatus(200)
-        //     ->assertViewIs('articles.create');
+        $response->assertStatus(200)
+            ->assertViewIs('articles.create');
     }
 }
