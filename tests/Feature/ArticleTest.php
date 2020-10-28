@@ -44,4 +44,11 @@ class ArticleTest extends TestCase
 
         $this->assertFalse($result);
     }
+
+    public function testIsJoinedByNull()
+    {
+        $article = factory(Article::class)->create();
+        $result = $article->isJoinedBy(null);
+        $this->assertFalse($result);
+    }
 }
