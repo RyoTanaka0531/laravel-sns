@@ -21,9 +21,13 @@ $factory->define(Article::class, function (Faker $faker) {
         },
         'date' =>$faker->dateTimeThisMonth->format('Y-m-d'),
         'area' => $faker->city,
+        //テスト用のデータ　seederを作る場合は適応できない
+        //seederの場合、numberBetweenを適応させる。
         'genre_id' => function(){
             return factory(Genre::class);
         },
+        //テスト用のデータ　seederを作る場合は適応できない
+        //seederの場合、numberBetweenを適応させる。
         'prefecture_id' => function(){
             return factory(Prefecture::class);
         },
