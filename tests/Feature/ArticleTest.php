@@ -51,4 +51,24 @@ class ArticleTest extends TestCase
         $result = $article->isJoinedBy(null);
         $this->assertFalse($result);
     }
+
+    public function testIsJoinedByTheUser()
+    {
+        $article = factory(Article::class)->create();
+        $user = factory(User::class)->create();
+        $article->joins()->attach($user);
+        $result = $article->isJoinedBy($user);
+        $this->assertTrue($result);
+    }
+
+    public function testIsJoinedByTheAnother()
+    {
+        $article = factory(Article::class)->create();
+        $user = factory(User::class)->create();
+        $another = factory(User::class)->create();
+        $article->joins()->attach($another);
+
+        $result = $article->isJoinedBy($user);
+        $this->assertFalse($result);
+    }
 }
