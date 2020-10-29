@@ -5,18 +5,19 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
+
 
 class UserControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testFollow()
     {
-        $response = $this->get('/');
+        $user = factory(User::class)->create();
+        $another = factory(User::class)->create();
 
-        $response->assertStatus(200);
+        $user->followings()->attach($another);
+
+        $result = $another->isFollowedBy($user);
+        $this->assertTrue($result);
     }
 }
