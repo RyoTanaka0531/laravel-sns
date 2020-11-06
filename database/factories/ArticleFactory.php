@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-// use App\Model;
 use App\Article;
 use App\User;
 use App\Genre;

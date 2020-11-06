@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
-    //
     public function __construct()
     {
         //ArticlePolicyとの対応関係を行う

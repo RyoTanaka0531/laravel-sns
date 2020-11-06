@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class CommentController extends Controller
 {
-    //
     public function store(CommentRequest $request, Comment $comment)
     {
         $comment->fill($request->all());
