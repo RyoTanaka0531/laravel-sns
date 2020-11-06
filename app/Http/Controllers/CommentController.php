@@ -18,15 +18,4 @@ class CommentController extends Controller
         return redirect()->route('articles.show', ['article' => $comment->article])
             ->with('flash_message', 'コメントを投稿しました');
     }
-    // public function store(Request $request)
-    // {
-    //     $validate_rule = [
-    //         'article_id' => 'required|exists:articles,id',
-    //         'message' => 'required|max:2000',
-    //     ];
-    //     $this->validate($request, $validate_rule);
-    //     $params = $request->all();
-    //     return $params;
-    //     return redirect()->route('articles.show', ['id' => $request->article_id]);
-    // }
 }

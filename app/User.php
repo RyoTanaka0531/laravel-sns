@@ -116,11 +116,6 @@ class User extends Authenticatable
     }
 
 
-    // public function getUserAreaAttribute():string
-    // {
-    //     return $this->prefecture->name.$this->address;
-    // }
-
     public function joins():BelongsToMany
     {
         return $this->belongsToMany('App\Article', 'joins')->withTimestamps();

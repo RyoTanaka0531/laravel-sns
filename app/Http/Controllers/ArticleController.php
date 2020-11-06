@@ -27,9 +27,6 @@ class ArticleController extends Controller
         $genres = Genre::all()->load('articles');
         $prefectures = Prefecture::all();
         $now = now();
-        // $articles = Article::paginate(10)->sortByDesc('created_at');]
-                //遅延Eagerロードの使用
-                // ->load(['user', 'likes', 'tags']);
         return view('articles.index', ['articles' => $articles, 'genres' => $genres,
                                         'now' => $now, 'prefectures' => $prefectures]);
     }
